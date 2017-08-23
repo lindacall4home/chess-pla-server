@@ -1,0 +1,29 @@
+{
+  "name": "chess-pla-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lindacall4home/chess-pla-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lindacall4home/chess-pla-server/issues"
+  },
+  "homepage": "https://github.com/lindacall4home/chess-pla-server#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.4",
+    "knex": "^0.13.0",
+    "pg": "^7.2.0"
+  }
+}
