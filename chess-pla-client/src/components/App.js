@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import Header from './Header';
 
-const Header = () => <h2>Header</h2>
 const Home = () => <h2>Home</h2>
 const Register = () => <h2>Register</h2>
 const Meeting = () => <h2>Meeting</h2>
 
 const App = () => {
   return (
-    <div>
+    <div className="container">
       <BrowserRouter>
         <div>
           <Header/>
