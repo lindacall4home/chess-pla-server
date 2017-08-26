@@ -6,7 +6,12 @@ class Header extends Component {
     return (
       <nav>
         <div className="nav-wrapper">
-          <Link to={'/'} className="brand-logo left">Chess PLA</Link>
+          <div className="left">
+            <Link to={'/'} className="brand-logo">Chess PLA</Link>
+            <div className="subtitle hide-on-med-and-down">
+              (Pairing, Ladder & Attendance)
+            </div>
+          </div>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li><Link to={'/register'}>Register</Link></li>
             <li><Link to={'/games'}>Games</Link></li>

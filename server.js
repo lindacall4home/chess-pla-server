@@ -14,6 +14,7 @@ app.use(function(req, res, next) {
 });
 
 app.use(bodyParser.json());
+app.use('/api/current-session', require('./routes/current-session'))
 app.use('/api/meetings', require('./routes/meetings'))
 
 app.listen(port, () => {

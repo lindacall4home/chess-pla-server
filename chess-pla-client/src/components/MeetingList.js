@@ -7,7 +7,7 @@ class MessageList extends Component {
       <div className="container">
         <ul className="collection with-header">
           <li className="collection-header"><h4>Meetings</h4></li>
-          {this.props.session.all
+          {this.props.session.allMeetings
           .map(meeting =>
             <li key={meeting.id}
                 className="collection-item">
