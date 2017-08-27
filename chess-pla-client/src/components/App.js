@@ -5,8 +5,8 @@ import * as actions from '../actions';
 import '../App.css';
 import Header from './Header';
 import Home from './Home'
+import NewPlayer from './NewPlayer'
 
-const Register = () => <h2>Register</h2>
 const Games = () => <h2>Games</h2>
 const Players = () => <h2>Players</h2>
 
@@ -26,7 +26,7 @@ class App extends Component {
           <Header/>
           <div>
             <Route exact path="/" component={Home} />
-            <Route path="/register" component={Register} />
+            <Route path="/register" component={NewPlayer} />
             <Route path="/games" component={Games} />
             <Route path="/players" component={Players} />
           </div>
