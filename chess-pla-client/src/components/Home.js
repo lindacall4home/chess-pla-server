@@ -4,8 +4,6 @@ import MeetingList from './MeetingList'
 
 class Home extends Component {
   render(){
-    console.log(this.props.session);
-
     return (
       <div className="container">
         <h4 className="center-align">

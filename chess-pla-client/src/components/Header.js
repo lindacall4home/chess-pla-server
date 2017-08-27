@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import knight from './knight.png'
 
 class Header extends Component {
   render(){
@@ -7,7 +8,10 @@ class Header extends Component {
       <nav>
         <div className="nav-wrapper">
           <div className="left">
-            <Link to={'/'} className="brand-logo">Chess PLA</Link>
+            <img id="logo-image" src={knight} alt="chess knight"/>          
+            <Link to={'/'} className="brand-logo">
+              Chess PLA
+            </Link>
             <div className="subtitle hide-on-med-and-down">
               (Pairing, Ladder & Attendance)
             </div>

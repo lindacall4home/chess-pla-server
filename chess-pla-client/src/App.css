@@ -6,6 +6,15 @@ a.brand-logo{
   padding-left: 5px;
 }
 .subtitle{
-  padding-top: 22px;
-  padding-left: 5px;
+  position:absolute;
+  top: 20px;
+  left: 35px;
+
+}
+
+#logo-image{
+  padding-top: 12px;
+  margin-left: 5px;
+  width: 25px;
+  height: auto;
 }
