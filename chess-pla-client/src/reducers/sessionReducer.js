@@ -1,6 +1,6 @@
-import { FETCH_MEETINGS } from '../actions/types';
+import { FETCH_MEETINGS, FETCH_CURRENT_SESSION } from '../actions/types';
 
-export default function(state = { byId: {}, all: [] }, action){
+export default function(state = { currentSession: '', meetingsById: {}, allMeetings: [] }, action){
   switch (action.type){
     case FETCH_MEETINGS:
 
@@ -11,9 +11,15 @@ export default function(state = { byId: {}, all: [] }, action){
 
       return {
         ...state,
-        byId: meetingsById,
-        all: action.meetings
+        meetingsById: meetingsById,
+        allMeetings: action.meetings
       }
+
+      case FETCH_CURRENT_SESSION:
+        return {
+          ...state,
+          currentSession: action.currentSession
+        }
 
     default:
       return state;

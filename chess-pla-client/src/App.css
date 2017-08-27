@@ -1,3 +1,20 @@
 nav{
   background-color: #9f45e0;
 }
+
+a.brand-logo{
+  padding-left: 5px;
+}
+.subtitle{
+  position:absolute;
+  top: 20px;
+  left: 35px;
+
+}
+
+#logo-image{
+  padding-top: 12px;
+  margin-left: 5px;
+  width: 25px;
+  height: auto;
+}
