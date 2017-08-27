@@ -16,6 +16,7 @@ app.use(function(req, res, next) {
 app.use(bodyParser.json());
 app.use('/api/current-session', require('./routes/current-session'))
 app.use('/api/meetings', require('./routes/meetings'))
+app.use('/api/current-players', require('./routes/current-players'))
 
 app.listen(port, () => {
   console.log('Listening on port', port);

@@ -15,9 +15,11 @@ class App extends Component {
   componentDidMount(){
     this.props.fetchCurrentSession();
     this.props.fetchMeetings();
+    this.props.fetchCurrentPlayers();
   }
 
   render(){
+
     return (
       <BrowserRouter>
         <div>

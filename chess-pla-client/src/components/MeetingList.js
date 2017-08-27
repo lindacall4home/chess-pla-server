@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 class MessageList extends Component {
   render(){
     return (
-      <div className="container">
+      <div className="chess-list">
         <ul className="collection with-header">
-          <li className="collection-header"><h4>Meetings</h4></li>
-          {this.props.session.allMeetings
+        <li className="collection-header"><h5>Meetings</h5></li>
+        {this.props.session.allMeetings
           .map(meeting =>
             <li key={meeting.id}
                 className="collection-item">
