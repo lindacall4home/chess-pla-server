@@ -8,15 +8,13 @@ class Home extends Component {
   render(){
 
     return (
-      <div className="totalcontain">
-        <div className="splash-container">
-          <h4 className="center-align">
-            {this.props.session.currentSession.session_name}
-          </h4>
-          <div className="flex-horizontal">
-            <Ladder/>
-            <MeetingList/>
-          </div>
+      <div>
+        <h4 className="center-align">
+          {this.props.session.currentSession.session_name}
+        </h4>
+        <div className="flex-horizontal">
+          <Ladder/>
+          <MeetingList/>
         </div>
       </div>
     );

@@ -1,6 +1,3 @@
-body{
-  background-image: image();
-}
 
 nav{
   background-color: #9f45e0;
@@ -23,7 +20,7 @@ a.brand-logo{
   height: auto;
 }
 
-
+/*
 .totalcontain {
   display: block;
   position: fixed;
@@ -32,9 +29,9 @@ a.brand-logo{
   margin: 0;
   top: 0;
   left: 0;
-}
+}*/
 
-.splash-container {
+/*.splash-container {
   display: block;
   width: 100%;
   z-index: 100;
@@ -45,7 +42,7 @@ a.brand-logo{
   height: 94.5vh;
   width: 100vw;
   margin-top: 5.5vw;
-}
+}*/
 
 .chess-table{
   width: 40%;
