@@ -30,14 +30,13 @@ router.post('/', validate, (req, res, next) => {
       birthday: req.body.birthday})
     .returning('*')
     .then(players => {
-      console.log(players[0].id)
       knex('session_player')
         .insert({
           session_id: req.body.session_id,
           player_id: players[0].id
         })
         .returning('*')
-        .then(sessions => res.json(sessions[0]))
+        .then(sessions => res.json(players[0]))
       })
     .catch(err => next(err))
 });

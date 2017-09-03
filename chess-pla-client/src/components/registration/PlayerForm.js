@@ -21,7 +21,6 @@ const renderFields = () => {
 }
 
 const PlayerForm = props => {
-  console.log("session", props.session);
   return (
     <div className="row">
       <form className="col s6" onSubmit={props.handleSubmit}>
@@ -53,24 +52,3 @@ export default reduxForm({
   form: 'playerForm',
   actions: actions
 })(PlayerForm);
-
-
-// function mapStateToProps(state) {
-//   return { formValues: state.form.playerForm.values };
-// }
-//
-// export default connect(mapStateToProps, actions)(withRouter(PlayerForm));
-
-// InitializeFromStateForm = reduxForm({
-//   form: 'initializeFromState' // a unique identifier for this form
-// })(InitializeFromStateForm)
-//
-// // You have to connect() to any reducers that you wish to connect to yourself
-// InitializeFromStateForm = connect(
-//   state => ({
-//     initialValues: state.account.data // pull initial values from account reducer
-//   }),
-//   { load: loadAccount } // bind account loading action creator
-// )(InitializeFromStateForm)
-//
-// export default InitializeFromStateForm

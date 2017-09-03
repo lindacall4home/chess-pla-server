@@ -3,7 +3,7 @@ import {
   FETCH_MEETINGS,
   FETCH_CURRENT_SESSION,
   FETCH_CURRENT_PLAYERS,
-  ADD_NEW_PLAYER} from './types';
+  ADD_NEW_SESSION_PLAYER} from './types';
 
 export const fetchMeetings = () => async dispatch => {
   const res = await axios.get('/api/meetings');
@@ -16,12 +16,13 @@ export const fetchCurrentSession = () => async dispatch => {
 };
 
 export const fetchCurrentPlayers = () => async dispatch => {
+  console.log('fetching players');
   const res = await axios.get('/api/current-players');
   dispatch( { type: FETCH_CURRENT_PLAYERS, currentPlayers: res.data });
 };
 
-export const addNewPlayer = (newPlayer) => async dispatch => {
-  console.log("in add new player", newPlayer);
+export const addNewSessionPlayer = (newPlayer, history) => async dispatch => {
   const res = await axios.post('/api/current-players', newPlayer);
-  dispatch( { type: ADD_NEW_PLAYER, newPlayer: res.data });
+  history.push('/');
+  dispatch( { type: ADD_NEW_SESSION_PLAYER, newPlayer: res.data });
 };
