@@ -21,6 +21,7 @@ export const fetchCurrentPlayers = () => async dispatch => {
 };
 
 export const addNewPlayer = (newPlayer) => async dispatch => {
-  const res = await axios.get('/api/current-players');
+  console.log("in add new player", newPlayer);
+  const res = await axios.post('/api/current-players', newPlayer);
   dispatch( { type: ADD_NEW_PLAYER, newPlayer: res.data });
 };

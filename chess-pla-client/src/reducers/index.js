@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import sessionReducer from './sessionReducer';
-import registrationReducer from './registrationReducer';
+import {reducer as reduxForm} from 'redux-form';
 
 export default combineReducers({
   session: sessionReducer,
-  registration: registrationReducer
+  form: reduxForm
 });

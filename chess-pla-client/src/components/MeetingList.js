@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-class MessageList extends Component {
+class MeetingList extends Component {
   render(){
     return (
       <div className="chess-list">
@@ -25,4 +25,4 @@ function mapStateToProps({ session }) {
   return { session };
 }
 
-export default connect(mapStateToProps)(MessageList);
+export default connect(mapStateToProps)(MeetingList);
