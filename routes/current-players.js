@@ -22,11 +22,23 @@ router.get('/', function(req, res, next){
 });
 
 router.post('/', validate, (req, res, next) => {
-  console.log('in post');
   knex('player')
-    .insert({first_name: req.body.first_name, last_name: req.body.last_name, alias: req.body.alias, birthday: req.body.birthday})
+    .insert({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      alias: req.body.alias,
+      birthday: req.body.birthday})
     .returning('*')
-    .then(players => res.json(players[0]))
+    .then(players => {
+      console.log(players[0].id)
+      knex('session_player')
+        .insert({
+          session_id: req.body.session_id,
+          player_id: players[0].id
+        })
+        .returning('*')
+        .then(sessions => res.json(sessions[0]))
+      })
     .catch(err => next(err))
 });
 

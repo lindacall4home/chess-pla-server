@@ -9,7 +9,8 @@ const FIELDS = [
   {label: "First Name", name: "first_name", type: "text"},
   {label: "Last Name", name: "last_name", type: "text"},
   {label: "Alias", name: "alias", type: "text"},
-  {label: "Birthday (YYYY-MM-DD)", name: "birthday", type: "date"}
+  {label: "Birthday (YYYY-MM-DD)", name: "birthday", type: "date"},
+  {label: "Session", name: "session_id", type: "number"}
 ];
 
 const renderFields = () => {
@@ -20,6 +21,7 @@ const renderFields = () => {
 }
 
 const PlayerForm = props => {
+  console.log("session", props.session);
   return (
     <div className="row">
       <form className="col s6" onSubmit={props.handleSubmit}>
