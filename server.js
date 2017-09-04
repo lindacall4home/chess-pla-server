@@ -1,9 +1,10 @@
 'use strict';
 
-const app = require('express');
+const express = require('express');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 8000;
 const cors = require('cors');
+const app = express();
 
 app.use(cors());
 
