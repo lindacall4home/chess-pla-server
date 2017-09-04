@@ -12,11 +12,11 @@ export const fetchMeetings = () => async dispatch => {
 
 export const fetchCurrentSession = () => async dispatch => {
   const res = await axios.get('/api/current-session');
+  console.log(res.data);
   dispatch( { type: FETCH_CURRENT_SESSION, currentSession: res.data });
 };
 
 export const fetchCurrentPlayers = () => async dispatch => {
-  console.log('fetching players');
   const res = await axios.get('/api/current-players');
   dispatch( { type: FETCH_CURRENT_PLAYERS, currentPlayers: res.data });
 };

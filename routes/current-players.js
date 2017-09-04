@@ -42,7 +42,6 @@ router.post('/', validate, (req, res, next) => {
 });
 
 function validate(req, res, next) {
-  console.log(req.body);
   const errors = [];
   ['first_name', 'last_name', 'alias', 'birthday'].forEach(field => {
     if (!req.body[field] || req.body[field].trim() === '') {

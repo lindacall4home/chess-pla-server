@@ -12,7 +12,9 @@ class Register extends React.Component {
     return (
       <div>
         Welcome to registration!
-        <PlayerForm session={this.props.session} onSubmit={this.handleSubmit.bind(this)}/>
+        <PlayerForm
+          onSubmit={this.handleSubmit.bind(this)}
+        />
       </div>
     );
   }

@@ -25,25 +25,25 @@ export default function(state = {
         allMeetings: action.meetings
       }
 
-      case FETCH_CURRENT_SESSION:
-        return {
-          ...state,
-          currentSession: action.currentSession
-        }
+    case FETCH_CURRENT_SESSION:
+      return {
+        ...state,
+        currentSession: action.currentSession,
+      }
 
-      case FETCH_CURRENT_PLAYERS:
-        return {
-          ...state,
-          currentPlayers: action.currentPlayers
-        }
+    case FETCH_CURRENT_PLAYERS:
+      return {
+        ...state,
+        currentPlayers: action.currentPlayers
+      }
 
-      case ADD_NEW_SESSION_PLAYER:
-        let players = Array.from(state.currentPlayers);
-        players.push(action.newPlayer);
-        return {
-          ...state,
-          currentPlayers: players
-        }
+    case ADD_NEW_SESSION_PLAYER:
+      let players = Array.from(state.currentPlayers);
+      players.push(action.newPlayer);
+      return {
+        ...state,
+        currentPlayers: players
+      }
 
     default:
       return state;

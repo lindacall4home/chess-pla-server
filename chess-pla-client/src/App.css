@@ -46,6 +46,8 @@ a.brand-logo{
 
 .chess-table{
   width: 40%;
+  overflow:auto;
+  height: 500px;
 }
 
 .chess-list{
