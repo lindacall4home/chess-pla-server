@@ -3,10 +3,11 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import '../App.css';
+import 'react-date-picker2/index.css'
 import Header from './Header';
 import Home from './Home'
+import Register from './registration/Register'
 
-const Register = () => <h2>Register</h2>
 const Games = () => <h2>Games</h2>
 const Players = () => <h2>Players</h2>
 
@@ -15,14 +16,16 @@ class App extends Component {
   componentDidMount(){
     this.props.fetchCurrentSession();
     this.props.fetchMeetings();
+    this.props.fetchCurrentPlayers();
   }
 
   render(){
+
     return (
-      <BrowserRouter>
+      <BrowserRouter className="container">
         <div>
           <Header/>
-          <div className="container">
+          <div>
             <Route exact path="/" component={Home} />
             <Route path="/register" component={Register} />
             <Route path="/games" component={Games} />

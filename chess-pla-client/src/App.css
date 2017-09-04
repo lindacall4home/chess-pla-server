@@ -1,3 +1,4 @@
+
 nav{
   background-color: #9f45e0;
 }
@@ -17,4 +18,55 @@ a.brand-logo{
   margin-left: 5px;
   width: 25px;
   height: auto;
+}
+
+/*
+.totalcontain {
+  display: block;
+  position: fixed;
+  z-index: 100;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+}*/
+
+/*.splash-container {
+  display: block;
+  width: 100%;
+  z-index: 100;
+  background-image: url("./images/colorful-chess-board.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 94.5vh;
+  width: 100vw;
+  margin-top: 5.5vw;
+}*/
+
+.chess-table{
+  width: 40%;
+  overflow:auto;
+  height: 500px;
+}
+
+.chess-list{
+  width: 40%;
+}
+
+.container{
+  width: 90%;
+}
+
+.flex-horizontal{
+  display: flex;
+  justify-content: space-around;
+}
+
+table{
+  border: 1px solid #e0e0e0;
+}
+
+.field-error{
+  margin-bottom: 20px;
 }
