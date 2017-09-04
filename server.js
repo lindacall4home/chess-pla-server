@@ -20,10 +20,10 @@ app.use('/api/meetings', require('./routes/meetings'))
 app.use('/api/current-players', require('./routes/current-players'))
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
+  app.use(express.static('chess-pla-client/build'));
   const path = require('path');
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'chess-pla-client', 'build', 'index.html'));
   });
 }
 
