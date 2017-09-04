@@ -1,6 +1,6 @@
 'use strict';
 
-const app = require('express')();
+const app = require('express');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 8000;
 const cors = require('cors');
