@@ -21,7 +21,7 @@ class MeetingList extends Component {
               <tr key={meeting.meeting_id}>
                 <td>
                   <Link to={'/meeting'} onClick={() => {
-                    this.props.onMeetingClick(meeting.meeting_id)}}>
+                    this.props.onMeetingClick(meeting)}}>
                     {new Date(meeting.date).toDateString()}
                   </Link>
                 </td>
@@ -40,8 +40,8 @@ function mapStateToProps({ session }) {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onMeetingClick: id => {
-      dispatch(setCurrentMeeting(id))
+    onMeetingClick: meeting => {
+      dispatch(setCurrentMeeting(meeting))
     }
   }
 }

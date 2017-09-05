@@ -7,7 +7,9 @@ import {
   FETCH_MEETING_PLAYERS,
   SET_CURRENT_MEETING,
   UPDATE_MEETING_PLAYER,
-  SET_TIME_IN_OUT} from './types';
+  SET_TIME_IN_OUT,
+  SHOW_CHALLENGE_MODAL,
+} from './types';
 
 export const fetchCurrentMeetings = () => async dispatch => {
   const res = await axios.get('/api/meetings/');
@@ -33,8 +35,8 @@ export const addNewSessionPlayer = (newPlayer, history) => async dispatch => {
   dispatch( { type: ADD_NEW_SESSION_PLAYER, newPlayer: res.data });
 };
 
-export const setCurrentMeeting = meetingId => async dispatch => {
-  dispatch( { type: SET_CURRENT_MEETING, meetingId: meetingId });
+export const setCurrentMeeting = meeting => async dispatch => {
+  dispatch( { type: SET_CURRENT_MEETING, meeting: meeting });
 };
 
 export const fetchMeetingPlayers = meetingId => async dispatch => {
@@ -46,6 +48,11 @@ export const fetchMeetingPlayers = meetingId => async dispatch => {
 export const setTimeInOut = (id, timeIn, timeOut) => async dispatch => {
   console.log('set time in/out ', id, timeIn, timeOut);
   dispatch( { type: SET_TIME_IN_OUT, playerId: id,  timeIn: timeIn, timeOut: timeOut});
+};
+
+export const showChallengeModal = (show) => async dispatch => {
+  console.log('show challenge modal ', show);
+  dispatch( { type: SHOW_CHALLENGE_MODAL, show: show});
 };
 
 export const updateMeetingPlayer = (meetingPlayer) => async dispatch => {

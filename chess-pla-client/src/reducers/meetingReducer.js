@@ -1,14 +1,13 @@
 import {
   FETCH_MEETING_PLAYERS,
   SET_CURRENT_MEETING,
-  // SET_CURRENT_MEETING_PLAYER,
-  SET_TIME_IN_OUT
+  SET_TIME_IN_OUT,
+  SHOW_CHALLENGE_MODAL
  } from '../actions/types';
 
 export default function(state = {
-  currentMeeting: '',
-  // currentMeetingPlayer: {},
-  //playersById: {},
+  currentMeeting: {},
+  showChallengeModal: false,
   allPlayers: [],
   },
   action){
@@ -16,28 +15,26 @@ export default function(state = {
   switch (action.type){
     case FETCH_MEETING_PLAYERS:
 
-      // const playersById = action.meetingPlayers.reduce((result, player) => {
-      //   result[player.id] = player
-      //   return result
-      // }, {})
-
       return {
         ...state,
-        //playersById: playersById,
         allPlayers: action.meetingPlayers
       }
 
     case SET_CURRENT_MEETING:
       return {
         ...state,
-        currentMeeting: action.meetingId,
+        currentMeeting: action.meeting,
       }
 
     case SET_TIME_IN_OUT:
-
+      let showChallenge = false;
       const newPlayerArray =  state.allPlayers.map( (player) => {
         if(player.player_id !== action.playerId){
           return player;
+        }
+        if(player.challenge_game === null ||
+          player.challenge_game === undefined){
+          showChallenge = true;
         }
         return {
             ...player,
@@ -46,12 +43,18 @@ export default function(state = {
         }
       });
 
-      console.log('in set in out in reducer ', newPlayerArray);
-
       return {
         ...state,
-        allPlayers: newPlayerArray
+        allPlayers: newPlayerArray,
+        showChallengeModal: showChallenge
       }
+
+    case SHOW_CHALLENGE_MODAL:
+      return{
+        ...state,
+        showChallengeModal: action.show
+      }
+
 
     default:
       return state;

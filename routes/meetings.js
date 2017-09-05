@@ -15,9 +15,7 @@ router.get('/', function(req, res, next){
   .from('session')
   .innerJoin('meeting', 'session.id', 'meeting.session_id')
   .where('session.is_current', true)
-  .then(meetings => {
-    console.log('get current meeting route', meetings);
-    return res.json(meetings);})
+  .then(meetings =>  res.json(meetings))
   .catch(err => next(err))
 });
 
@@ -42,10 +40,8 @@ router.get('/:id', function(req,res,next){
     .innerJoin('player', 'session_player.player_id', 'player.id')
     .leftJoin('meeting_player', 'meeting.id', 'meeting_player.meeting_id')
     .where('meeting.id', req.params.id)
-    .then(function(data){
-      console.log('meeting players route', data);
-      res.send(data);
-  });
+    .then(data =>res.send(data))
+    .catch(err => next(err))
 });
 
 module.exports = router;

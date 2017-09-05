@@ -6,3 +6,4 @@ export const FETCH_MEETING_PLAYERS = 'fetch_meeting_players';
 export const SET_CURRENT_MEETING = 'set_current_meeting';
 // export const SET_CURRENT_MEETING_PLAYER = 'set_current_meeting_player';
 export const SET_TIME_IN_OUT = 'set_time_in_out';
+export const SHOW_CHALLENGE_MODAL = 'show_challenge_modal';
