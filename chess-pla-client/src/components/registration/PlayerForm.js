@@ -69,10 +69,6 @@ const mapStateToProps = state => {
   }
 }
 
-
-
-
-
 PlayerForm = reduxForm({
   validate,
   form: 'playerForm',

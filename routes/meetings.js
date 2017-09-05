@@ -24,10 +24,10 @@ router.get('/', function(req, res, next){
 router.get('/:id', function(req,res,next){
   knex
     .select(
-      'meeting.id',
+      'meeting.id as meeting_id',
       'meeting.date',
       'meeting.session_id',
-      'player.id',
+      'player.id as player_id',
       'first_name',
       'last_name',
       'alias',

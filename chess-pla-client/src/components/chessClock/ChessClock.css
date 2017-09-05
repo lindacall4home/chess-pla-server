@@ -40,7 +40,7 @@
 	border-top: .6px solid rgba(255, 199, 168,.8);
 	border-bottom: none;
 }
-#work-switch:hover, #break-switch:hover, button:hover {
+#in-switch:hover, #out-switch:hover, #in:hover, #out:hover {
 	cursor: pointer;
 }
 
@@ -62,7 +62,7 @@
 	border-top-right-radius: 10px;
 }
 
-.clock h1 {
+/*.clock h1 {
 	text-align: center;
 	font-family: 'Lobster', cursive;
 	color: #462411;
@@ -75,7 +75,7 @@ hr {
 	border-top: .4px solid rgba(70,36,17,.6);
 	border-bottom: .4px solid rgba(255,255,255,.2);
 	margin-bottom: 2px;
-}
+}*/
 
 .timers {
 	display: flex;
@@ -102,7 +102,7 @@ hr {
 	box-shadow: inset 0px 0px 2px #030303, inset 0px -7px .2px rgba(150, 150, 150, .2);
 }
 
-#work-time, #break-time {
+#in-time, #out-time {
 	display: block;
 	text-align: center;
 	margin-top: 1px;
@@ -110,7 +110,7 @@ hr {
 	font-weight: bold;
 }
 
-.work-settings, .break-settings {
+/*.work-settings, .break-settings {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
@@ -155,7 +155,7 @@ hr {
 	font-weight: bold;
 	font-size: 5px;
 	margin-top: 1.4px;
-}
+}*/
 
 .clock-base {
 	height: 5px;

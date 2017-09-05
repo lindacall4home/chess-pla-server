@@ -5,7 +5,9 @@ import {
   FETCH_CURRENT_PLAYERS,
   ADD_NEW_SESSION_PLAYER,
   FETCH_MEETING_PLAYERS,
-  SET_CURRENT_MEETING} from './types';
+  SET_CURRENT_MEETING,
+  UPDATE_MEETING_PLAYER,
+  SET_TIME_IN_OUT} from './types';
 
 export const fetchCurrentMeetings = () => async dispatch => {
   const res = await axios.get('/api/meetings/');
@@ -39,4 +41,15 @@ export const fetchMeetingPlayers = meetingId => async dispatch => {
   const res = await axios.get('/api/meetings/' + meetingId);
   console.log('meeting players', res.data);
   dispatch( { type: FETCH_MEETING_PLAYERS, meetingPlayers: res.data });
+};
+
+export const setTimeInOut = (id, timeIn, timeOut) => async dispatch => {
+  console.log('set time in/out ', id, timeIn, timeOut);
+  dispatch( { type: SET_TIME_IN_OUT, playerId: id,  timeIn: timeIn, timeOut: timeOut});
+};
+
+export const updateMeetingPlayer = (meetingPlayer) => async dispatch => {
+  const res = await axios.post('/api/meetings/', meetingPlayer);
+  console.log('update meeting player ', meetingPlayer);
+  fetchMeetingPlayers(meetingPlayer.meeting_id);
 };

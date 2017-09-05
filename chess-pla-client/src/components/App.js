@@ -15,6 +15,7 @@ const Players = () => <h2>Players</h2>;
 class App extends Component {
 
   componentDidMount(){
+    this.props.fetchCurrentSession();
     this.props.fetchCurrentPlayers();
     this.props.fetchCurrentMeetings();
   }

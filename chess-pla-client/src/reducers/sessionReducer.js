@@ -5,7 +5,6 @@ import {
   ADD_NEW_SESSION_PLAYER } from '../actions/types';
 
 export default function(state = {
-  currentSessionName: '',
   currentSession: {},
   meetingsById: {},
   allMeetings: [],
@@ -22,14 +21,11 @@ export default function(state = {
 
       return {
         ...state,
-        currentSessionName:
-          (action.meetings.length > 0) ? action.meetings[0].session_name : " ",
         meetingsById: meetingsById,
         allMeetings: action.meetings
       }
 
     case FETCH_CURRENT_SESSION:
-      console.log('in reducer', action);
       return {
         ...state,
         currentSession: action.currentSession,
