@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MeetingList from './MeetingList'
 import Ladder from './Ladder'
+import * as actions from '../actions';
 
 class Home extends Component {
 
@@ -10,7 +11,7 @@ class Home extends Component {
     return (
       <div>
         <h4 className="center-align">
-          {this.props.session.currentSession.session_name}
+          {this.props.session.currentSessionName}
         </h4>
         <div className="flex-horizontal">
           <Ladder/>
@@ -25,4 +26,4 @@ function mapStateToProps({ session }) {
   return { session };
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps, actions)(Home);

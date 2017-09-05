@@ -6,7 +6,7 @@ const knex = require('../knex');
 
 router.get('/', function(req, res, next){
   knex('session')
-  .where('isCurrent', true)
+  .where('is-current', true)
   .then(session => res.json(session[0]))
   .catch(err => next(err))
 });

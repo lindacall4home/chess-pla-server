@@ -1,22 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { setCurrentMeeting } from '../actions'
 
 class MeetingList extends Component {
   render(){
+    console.log('in meeting list ', this.props.session);
     return (
-      <div className="chess-list">
-        <ul className="collection with-header">
-        <li className="collection-header"><h5>Meetings</h5></li>
-        {this.props.session.allMeetings
-          .map(meeting =>
-            <li key={meeting.id}
-                className="collection-item">
-                {new Date(meeting.date).toDateString()}
-            </li>
-          )}
-        </ul>
+      <div className="chess-table">
+        <h4 className="center-align">Meetings</h4>
+        <table className="striped bordered">
+          <thead>
+            <tr>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.props.session.allMeetings
+            .map(meeting =>
+              <tr key={meeting.meeting_id}>
+                <td>
+                  <Link to={'/meeting'} onClick={() => {
+                    this.props.onMeetingClick(meeting.meeting_id)}}>
+                    {new Date(meeting.date).toDateString()}
+                  </Link>
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
-
     );
   }
 }
@@ -25,4 +38,12 @@ function mapStateToProps({ session }) {
   return { session };
 }
 
-export default connect(mapStateToProps)(MeetingList);
+const mapDispatchToProps = dispatch => {
+  return {
+    onMeetingClick: id => {
+      dispatch(setCurrentMeeting(id))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MeetingList);

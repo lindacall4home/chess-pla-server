@@ -1,0 +1,175 @@
+/* Chess inspired Pomodoro timer
+   Andrew Creech 2017 */
+
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#clock {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 120px;
+	height: 60px;
+	background: #F3E6DE;
+	background: linear-gradient(to bottom, rgba(243,230,222,1) 0%,rgba(192,178,165,1) 100%);
+	font-family: Sans-Serif;
+	color: #333;
+}
+
+.switches {
+	width: 120px;
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-end;
+}
+
+.switches div {
+	width: 15px;
+	height: 6px;
+	background: #462411;
+	background: linear-gradient(to bottom, rgba(70,36,17,1) 0%, rgba(70,36,17,1) 0%, rgba(128,66,33,1) 100%);
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+	border: 1.5px solid rgba(0,0,0,.4);
+	border-top: .6px solid rgba(255, 199, 168,.8);
+	border-bottom: none;
+}
+#work-switch:hover, #break-switch:hover, button:hover {
+	cursor: pointer;
+}
+
+.switches .switch-down {
+	height: 2px;
+}
+
+.clock {
+	background: #9e683c;
+	background-image: url(http://blogrope.com/wp-content/uploads/2013/06/003-wood-melamine-subttle-pattern-background-pat.jpg);
+	box-shadow: inset 0 0 40px rgba(70,36,17,.5);
+	width: 120px;
+	height: 60px;
+	border-top: 1.6px solid rgba(255,255,255,.2);
+	border-left: 1.6px solid rgba(70,36,17,.6);
+	border-right: 1.6px solid rgba(70,36,17,.6);
+	border-bottom: .4px solid rgba(70,36,17,.6);
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.clock h1 {
+	text-align: center;
+	font-family: 'Lobster', cursive;
+	color: #462411;
+	font-size: 12px;
+}
+
+hr {
+	height: 0;
+	border: transparent;
+	border-top: .4px solid rgba(70,36,17,.6);
+	border-bottom: .4px solid rgba(255,255,255,.2);
+	margin-bottom: 2px;
+}
+
+.timers {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.timers h6 {
+	text-align: center;
+	color: #462411;
+}
+
+.display {
+	width: 40px;
+	height: 15px;
+	background: white;
+	margin-bottom: 4px;
+	border-radius: 2px;
+	border-top: .4px solid #C1C1C1;
+	border-right: .4px solid #C1C1C1;
+	border-bottom: .4px solid #FFF;
+	border-left: .4px solid #FFF;
+	background-color: #FFF;
+	box-shadow: inset 0px 0px 2px #030303, inset 0px -7px .2px rgba(150, 150, 150, .2);
+}
+
+#work-time, #break-time {
+	display: block;
+	text-align: center;
+	margin-top: 1px;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.work-settings, .break-settings {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.work-settings button, .break-settings button {
+	position: relative;
+	width: 10px;
+	height: 5px;
+	color: tan;
+	font-size: 2.8px;
+	background: #462411;
+	background: linear-gradient(to bottom, rgba(70,36,17,1) 0%, rgba(70,36,17,1) 0%, rgba(128,66,33,1) 100%);
+	border-radius: 4px;
+	border: .2px solid rgba(0,0,0,.3);
+	border-top: .4px solid rgba(255, 199, 168,.8);
+	border-bottom-color: rgba(255, 199, 168,.4);
+	box-shadow: 0 .4px 1px rgba(0,0,0,.7);
+	outline: none;
+}
+.work-settings button:active, .break-settings button:active {
+	box-shadow: 0 .2px .4px black;
+	top: .2px;
+}
+
+.work-settings-display, .break-settings-display {
+	width: 10px;
+	height: 10px;
+	background: white;
+	border-radius: 2px;
+	border-top: .4px solid #C1C1C1;
+	border-right: .4px solid #C1C1C1;
+	border-bottom: .4px solid #FFF;
+	border-left: .4px solid #FFF;
+	background-color: #FFF;
+	box-shadow: inset 0px 0px 2px #030303, inset 0px -4px .2px rgba(150, 150, 150, .2);
+}
+
+#set-work-time, #set-break-time {
+	display: block;
+	text-align: center;
+	font-weight: bold;
+	font-size: 5px;
+	margin-top: 1.4px;
+}
+
+.clock-base {
+	height: 5px;
+	width: 128px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border-top: 1px solid rgba(255,255,255,.2);
+	border-left: .4px solid rgba(70,36,17,.5);
+	border-right: .4px solid rgba(70,36,17,.5);
+	border-bottom: .2px solid rgba(70,36,17,.5);
+	background: #9e683c;
+	background-image: url(http://blogrope.com/wp-content/uploads/2013/06/003-wood-melamine-subttle-pattern-background-pat.jpg);
+}
+.clock-base:last-of-type {
+	width: 136px;
+	height: 7px
+}
