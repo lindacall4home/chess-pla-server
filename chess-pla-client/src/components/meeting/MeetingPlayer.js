@@ -25,9 +25,10 @@ class MeetingPlayerList extends Component {
         </td>
         <td>
           <a
-            className="chess-waves-effect waves-light btn" onClick={this.props.onChallengeGameClick}
+            className="chess-btn btn"
+            onClick={this.props.onChallengeGameClick}
           >
-            Game?
+            ?
           </a>
         </td>
       </tr>

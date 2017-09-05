@@ -71,6 +71,10 @@ table{
   margin-bottom: 20px;
 }
 
+#meeting-players{
+  width: 60%;
+}
+
 .chess-modal{
   display: block;
   width: 80%;
@@ -126,4 +130,12 @@ z-depth-4, .chess-modal {
     -webkit-transition: .3s ease-out;
     -o-transition: .3s ease-out;
     transition: .3s ease-out;
+}
+
+.chess-btn{
+  height: 60px;
+  width: 60px;
+  background-image: url('./images/chess-board.jpg');
+  color: black;
+  font-size: 40px;
 }
