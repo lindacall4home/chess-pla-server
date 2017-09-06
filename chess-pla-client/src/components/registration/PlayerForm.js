@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { reduxForm, Field, change } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import RegistrationField from './RegistrationField';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
@@ -43,7 +43,7 @@ class PlayerForm extends Component {
           <Link to="/" className="red btn-flat white-text">
             Cancel
           </Link>
-         <button type="submit" className="teal btn-flat right white-text">
+         <button type="submit" className="green btn-flat right white-text">
             Add Player
             <i className="material-icons right">done</i>
           </button>
@@ -68,10 +68,6 @@ const mapStateToProps = state => {
     sessionId: state.session.currentSession.id
   }
 }
-
-
-
-
 
 PlayerForm = reduxForm({
   validate,

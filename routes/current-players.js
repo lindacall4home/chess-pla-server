@@ -16,8 +16,10 @@ router.get('/', function(req, res, next){
   .from('session_player')
   .innerJoin('player', 'player.id', 'player_id')
   .innerJoin('session', 'session.id', 'session_id')
-  .where('isCurrent', true)
-  .then(players => res.json(players))
+  .where('is_current', true)
+  .then(players => {
+    console.log('session players route ', players);
+    res.json(players)})
   .catch(err => next(err))
 });
 

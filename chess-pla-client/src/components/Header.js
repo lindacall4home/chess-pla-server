@@ -17,6 +17,7 @@ class Header extends Component {
             </div>
           </div>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
+            <li><Link to={'/'}>Home</Link></li>
             <li><Link to={'/register'}>Register</Link></li>
             <li><Link to={'/games'}>Games</Link></li>
             <li><Link to={'/players'}>Players</Link></li>

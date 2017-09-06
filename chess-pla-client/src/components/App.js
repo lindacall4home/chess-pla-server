@@ -3,20 +3,21 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import '../App.css';
-import 'react-date-picker2/index.css'
+import 'react-date-picker2/index.css';
 import Header from './Header';
-import Home from './Home'
-import Register from './registration/Register'
+import Home from './Home';
+import Register from './registration/Register';
+import Meeting from './meeting/Meeting';
 
-const Games = () => <h2>Games</h2>
-const Players = () => <h2>Players</h2>
+const Games = () => <h2>Games</h2>;
+const Players = () => <h2>Players</h2>;
 
 class App extends Component {
 
   componentDidMount(){
     this.props.fetchCurrentSession();
-    this.props.fetchMeetings();
     this.props.fetchCurrentPlayers();
+    this.props.fetchCurrentMeetings();
   }
 
   render(){
@@ -30,6 +31,7 @@ class App extends Component {
             <Route path="/register" component={Register} />
             <Route path="/games" component={Games} />
             <Route path="/players" component={Players} />
+            <Route path="/meeting" component={Meeting} />
           </div>
         </div>
       </BrowserRouter>

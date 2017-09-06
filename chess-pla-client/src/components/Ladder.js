@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 class Ladder extends Component {
   render(){
+    console.log('in ladder', this.props.session);
     return (
       <div className="chess-table">
         <h4 className="center-align">Ladder</h4>

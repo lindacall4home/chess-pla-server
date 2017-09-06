@@ -1,18 +1,18 @@
 import {
-  FETCH_MEETINGS,
+  FETCH_CURRENT_MEETINGS,
   FETCH_CURRENT_SESSION,
   FETCH_CURRENT_PLAYERS,
   ADD_NEW_SESSION_PLAYER } from '../actions/types';
 
 export default function(state = {
-  currentSession: '',
+  currentSession: {},
   meetingsById: {},
   allMeetings: [],
   currentPlayers: []},
   action){
 
   switch (action.type){
-    case FETCH_MEETINGS:
+    case FETCH_CURRENT_MEETINGS:
 
       const meetingsById = action.meetings.reduce((result, meeting) => {
         result[meeting.id] = meeting
