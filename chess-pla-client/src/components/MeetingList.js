@@ -8,9 +8,9 @@ class MeetingList extends Component {
     console.log('in meeting list ', this.props.session);
     return (
       <div className="chess-table">
-        <h4 className="center-align">Meetings</h4>
-        <table className="striped bordered">
-          <thead>
+        <h4 className="center-align chess-table-header">Meetings</h4>
+        <table className="bordered highlight centered">
+            <thead>
             <tr>
               <th>Date</th>
             </tr>
@@ -20,7 +20,7 @@ class MeetingList extends Component {
             .map(meeting =>
               <tr key={meeting.meeting_id}>
                 <td>
-                  <Link to={'/meeting'} onClick={() => {
+                  <Link to={'/meeting'} style={{color: '#9f45e0'}} onClick={() => {
                     this.props.onMeetingClick(meeting)}}>
                     {new Date(meeting.date).toDateString()}
                   </Link>

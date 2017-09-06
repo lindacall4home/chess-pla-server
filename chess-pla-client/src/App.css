@@ -1,4 +1,8 @@
 
+body{
+  background-image: url('./images/footer_lodyas.png');
+}
+
 nav{
   background-color: #9f45e0;
 }
@@ -20,39 +24,64 @@ a.brand-logo{
   height: auto;
 }
 
-/*
-.totalcontain {
-  display: block;
-  position: fixed;
-  z-index: 100;
-  padding: 0;
-  margin: 0;
-  top: 0;
-  left: 0;
-}*/
+.chess-page-header{
+  color: white;
+  margin-top: 40px;
 
-/*.splash-container {
-  display: block;
-  width: 100%;
-  z-index: 100;
-  background-image: url("./images/colorful-chess-board.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 94.5vh;
-  width: 100vw;
-  margin-top: 5.5vw;
-}*/
+}
+
+.chess-page-sub-header{
+  color: white;
+}
 
 .chess-table{
   width: 40%;
   overflow:auto;
-  height: 500px;
+  height: 400px;
+  background-color: white;
+  margin-top:40px;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px rgba(21, 22, 20, 0.97);
+}
+
+.chess-table-header{
+  background-color: #9f45e0;
+  height: 60px;
+  margin: 0;
+  padding-top:10px;
+  color: white;
+}
+
+.chess-form{
+  background-color: white;
+  width: 40%;
+  margin-top:40px;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px rgba(21, 22, 20, 0.97);
 }
 
 .chess-list{
   width: 40%;
 }
+
+.chess-btn{
+  margin: 5px;
+  border-radius: 15px;
+}
+
+.chess-btn-yes {
+  background-color: #9f45e0;
+}
+
+.chess-btn-no {
+  background-color: #e4d72d;
+}
+
+/*.chess-form-label{
+  margin-left: 10px;
+  font-size: 15px;
+}*/
+ /*style={{marginBottom: '5px'}}*/
 
 .container{
   width: 90%;
@@ -77,8 +106,8 @@ table{
 
 .chess-modal{
   display: block;
-  width: 80%;
   position: fixed;
+  width: 50%;
   left: 0;
   right: 0;
   background-color: #fafafa;
@@ -86,7 +115,8 @@ table{
   max-height: 70%;
   margin: auto;
   overflow-y: auto;
-  border-radius: 2px;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px rgba(21, 22, 20, 0.97);
   will-change: top, opacity;
 }
 
@@ -132,7 +162,7 @@ z-depth-4, .chess-modal {
     transition: .3s ease-out;
 }
 
-.chess-btn{
+#chess-board-btn{
   height: 60px;
   width: 60px;
   background-image: url('./images/chess-board.jpg');

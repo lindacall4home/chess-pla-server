@@ -11,8 +11,8 @@ class MeetingPlayerList extends Component {
     }
     return (
       <div id="meeting-players" className="chess-table">
-        <h4 className="center-align">Players</h4>
-        <table className="striped bordered">
+        <h4 className="center-align chess-table-header">Players</h4>
+        <table className="bordered highlight centered">
           <thead>
             <tr>
               <th>Alias</th>

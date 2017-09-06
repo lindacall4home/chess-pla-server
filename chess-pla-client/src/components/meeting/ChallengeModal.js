@@ -14,14 +14,14 @@ class ChallengeModal extends Component {
           </div>
           <div className="chess-modal-footer flex-horizontal">
             <button
-              className="green btn-flat white-text"
+              className="chess-btn chess-btn-yes btn-flat right white-text"
               onClick={() => this.props.onSetPlayChallengeGame(true, this.props.meeting.currentPlayer)}
             >
               Yes
               <i className="material-icons right">done</i>
             </button>
             <button
-              className="red btn-flat white-text"
+              className="chess-btn chess-btn-no btn-flat right white-text"
               onClick={() => this.props.onSetPlayChallengeGame(false, this.props.meeting.currentPlayer)}
             >
               Not today

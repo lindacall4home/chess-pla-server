@@ -11,7 +11,12 @@ class Register extends React.Component {
   render(){
     return (
       <div>
-        Welcome to registration!
+        <h4 className="center-align chess-page-header">
+          Eldorado K-8 Chess Club
+        </h4>
+        <h5 className="center-align chess-page-sub-header">
+          2017-2018
+        </h5>
         <PlayerForm
           onSubmit={this.handleSubmit.bind(this)}
         />

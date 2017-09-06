@@ -11,8 +11,8 @@ class PairingList extends Component {
     }
     return (
       <div id="meeting-pairings" className="chess-table">
-        <h4 className="center-align">Pairings</h4>
-        <table className="striped bordered">
+        <h4 className="center-align chess-table-header">Games</h4>
+        <table className="bordered highlight centered">
           <thead>
             <tr>
               <th>Board</th>

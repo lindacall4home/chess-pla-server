@@ -12,3 +12,4 @@ export const UPDATE_MEETING_PLAYER = 'update_meeting_player';
 export const FETCH_MEETING_GAMES = 'fetch_meeting_games';
 export const SET_GAME_RESULT = 'set_game_resut';
 export const SET_SHOW_PLAYERS = 'set_show_players';
+export const SET_RANK_BY_AGE = 'set_rank_by_age';

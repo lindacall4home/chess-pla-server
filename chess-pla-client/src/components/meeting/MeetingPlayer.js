@@ -26,7 +26,8 @@ class MeetingPlayer extends Component {
         </td>
         <td>
           <a
-            className="chess-btn btn"
+            id="chess-board-btn"
+            className="btn"
             onClick={() => this.props.onChallengeGameClick(this.props.player)}
           >
             <i

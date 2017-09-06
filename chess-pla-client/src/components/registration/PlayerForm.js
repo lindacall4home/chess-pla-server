@@ -38,16 +38,21 @@ class PlayerForm extends Component {
   render(){
     return (
       <div className="row">
-        <form className="col s6" onSubmit={this.props.handleSubmit}>
-          {this.renderFields()}
-          <Link to="/" className="red btn-flat white-text">
-            Cancel
-          </Link>
-         <button type="submit" className="green btn-flat right white-text">
-            Add Player
-            <i className="material-icons right">done</i>
-          </button>
-        </form>
+        <div className="flex-horizontal">
+          <form className="chess-form" onSubmit={this.props.handleSubmit}>
+            {this.renderFields()}
+            <Link to="/" className="chess-btn chess-btn-no btn-flat white-text">
+              Cancel
+            </Link>
+            <button
+              type="submit"
+              className="chess-btn chess-btn-yes btn-flat right white-text"
+              >
+              Add Player
+              <i className="material-icons right">done</i>
+            </button>
+          </form>
+        </div>
       </div>
     );
   }

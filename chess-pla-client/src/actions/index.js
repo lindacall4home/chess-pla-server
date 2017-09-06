@@ -13,7 +13,8 @@ import {
   FETCH_MEETING_GAMES,
   SET_GAME_RESULT,
   SET_PLAY_CHALLENGE_GAME,
-  SET_SHOW_PLAYERS
+  SET_SHOW_PLAYERS,
+  SET_RANK_BY_AGE
 } from './types';
 
 export const fetchCurrentMeetings = () => async dispatch => {
@@ -110,4 +111,9 @@ export const setGameResult = (game, result) => async dispatch => {
 export const setShowPlayers = (show) => async dispatch => {
   console.log('set show players ', show);
   dispatch( { type: SET_SHOW_PLAYERS, show: show});
+};
+
+export const setRankByAge = (rankByAge) => async dispatch => {
+  console.log('set rank by age ', rankByAge);
+  dispatch( { type: SET_RANK_BY_AGE, rankByAge : rankByAge});
 };

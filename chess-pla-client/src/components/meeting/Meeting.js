@@ -4,7 +4,7 @@ import MeetingPlayerList from './MeetingPlayerList';
 import ChallengeModal from './ChallengeModal';
 import PairingList from './PairingList';
 import * as actions from '../../actions';
-import {setShowPlayers} from '../../actions';
+import { setShowPlayers } from '../../actions';
 import { bindActionCreators } from 'redux'
 
 class Meeting extends React.Component {
@@ -17,18 +17,23 @@ class Meeting extends React.Component {
   render(){
     return (
       <div>
-        <h4 className="center-align">
-          {new Date(this.props.meeting.date).toDateString()}
+        <h4 className="center-align chess-page-header">
+          Eldorado K-8 Chess Club
         </h4>
+        <h5 className="center-align chess-page-sub-header">
+          {new Date(this.props.meeting.date).toDateString()}
+        </h5>
         <div className="flex-horizontal">
           <a
-            className="waves-effect waves-light btn-large"
+            className="waves-effect waves-light"
+            style={{color: 'white', fontSize: '17px'}}
             onClick={() => this.props.onShowPlayers(true)}
           >
             Players
           </a>
           <a
-            className="waves-effect waves-light btn-large"
+            className="waves-effect waves-light"
+            style={{color: 'white', fontSize: '17px'}}
             onClick={() => this.props.onShowPlayers(false)}
           >
             Games
