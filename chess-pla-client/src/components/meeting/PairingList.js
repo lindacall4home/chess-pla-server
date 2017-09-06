@@ -5,7 +5,10 @@ import Pairing from './Pairing';
 class PairingList extends Component {
 
   render(){
-    console.log('in pairing list ', this.props.meeting.allPairings);
+    console.log('in pairing list ', this.props.meeting.allPairings, this.props.meeting.allPairings, this.props.meeting.showPlayers);
+    if(this.props.meeting.showPlayers){
+      return null;
+    }
     return (
       <div id="meeting-pairings" className="chess-table">
         <h4 className="center-align">Pairings</h4>

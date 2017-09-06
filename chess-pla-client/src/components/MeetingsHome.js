@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MeetingList from './MeetingList'
-import PairingList from './meeting/PairingList'
 
 class MeetingsHome extends Component {
 
@@ -14,7 +13,6 @@ class MeetingsHome extends Component {
         </h4>
         <div className="flex-horizontal">
           <MeetingList/>
-          <PairingList/>
         </div>
       </div>
     );

@@ -7,6 +7,7 @@ import {
   SET_PLAY_CHALLENGE_GAME,
   SET_GAME_RESULT,
   FETCH_MEETING_GAMES,
+  SET_SHOW_PLAYERS
  } from '../actions/types';
 
 export default function(state = {
@@ -112,6 +113,12 @@ export default function(state = {
       return {
         ...state,
         allGames: newGameArray
+      }
+
+    case SET_SHOW_PLAYERS:
+      return{
+        ...state,
+        showPlayers: action.show
       }
 
     default:

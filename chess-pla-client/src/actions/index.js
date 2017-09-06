@@ -13,6 +13,7 @@ import {
   FETCH_MEETING_GAMES,
   SET_GAME_RESULT,
   SET_PLAY_CHALLENGE_GAME,
+  SET_SHOW_PLAYERS
 } from './types';
 
 export const fetchCurrentMeetings = () => async dispatch => {
@@ -104,4 +105,9 @@ export const setGameResult = (game, result) => async dispatch => {
   console.log('set game result ', game, result);
   await axios.patch('/api/meeting-games/', {game: game, game_result: result});
   dispatch( { type: SET_GAME_RESULT, game: game, game_result: result});
+};
+
+export const setShowPlayers = (show) => async dispatch => {
+  console.log('set show players ', show);
+  dispatch( { type: SET_SHOW_PLAYERS, show: show});
 };
