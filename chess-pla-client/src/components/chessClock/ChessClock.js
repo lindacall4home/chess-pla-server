@@ -7,15 +7,15 @@ class ChessClock extends React.Component {
 
   checkIn = () => {
     this.playSound();
-    console.log('checkin ', this.props.id, new Date(), null);
-    this.props.onInOutClick(this.props.id, new Date(), null);
+    console.log('checkin ', this.props.player, this.formatTime(new Date()), null);
+    this.props.onInOutClick(this.props.player, this.formatTime(new Date()), null);
   }
 
   checkOut = () => {
     if(this.props.timeIn !== null){
-      console.log('checkout ', this.props.id, this.props.timeIn, new Date());
+      console.log('checkout ', this.props.player, this.props.timeIn, this.formatTime(new Date()));
       this.playSound();
-      this.props.onInOutClick(this.props.id, this.props.timeIn, new Date());
+      this.props.onInOutClick(this.props.player, this.props.timeIn, this.formatTime(new Date()));
     }
   }
 
@@ -28,7 +28,7 @@ class ChessClock extends React.Component {
     if( hours > 12 ) {
       hours -= 12
     }
-    return hours.toString() + ":"  + date.getMinutes();
+    return hours.toString().padStart(2, '0') + ":"  +   date.getMinutes().toString().padStart(2, '0');
   }
 
   getInSwitchClass = () => {
@@ -52,7 +52,7 @@ class ChessClock extends React.Component {
   }
 
   render(){
-    console.log("in/out ", this.props.timeIn, this.props.timeOut);
+    console.log("chess clock ", this.props.timeIn, this.props.timeOut, this.props.player);
     return (
       <div id="clock">
         <div className="switches">
@@ -73,14 +73,14 @@ class ChessClock extends React.Component {
             <div id="in" onClick={this.checkIn}>
               <h6>IN</h6>
               <div className="display">
-                <span id="in-time">{this.formatTime(this.props.timeIn)}</span>
+                <span id="in-time">{this.props.timeIn === null ? null : this.props.timeIn.substr(0, 5)}</span>
               </div>
 
             </div>
             <div id="out" onClick={this.checkOut}>
                <h6>OUT</h6>
                 <div className="display">
-                    <span id="out-time">{this.formatTime(this.props.timeOut)}</span>
+                    <span id="out-time">{this.props.timeOut === null ? null : this.props.timeOut.substr(0, 5)}</span>
                 </div>
 
               </div>
@@ -96,7 +96,7 @@ class ChessClock extends React.Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-    id: ownProps.id,
+    player: ownProps.player,
     timeIn: ownProps.timeIn,
     timeOut: ownProps.timeOut
    };
@@ -104,8 +104,8 @@ function mapStateToProps(state, ownProps) {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInOutClick: (id, timeIn, timeOut) => {
-      dispatch(setTimeInOut(id, timeIn, timeOut))
+    onInOutClick: (player, timeIn, timeOut) => {
+      dispatch(setTimeInOut(player, timeIn, timeOut))
     }
   }
 }

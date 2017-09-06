@@ -139,3 +139,11 @@ z-depth-4, .chess-modal {
   color: black;
   font-size: 40px;
 }
+
+#challengeIcon{
+  width: 60px;
+  height: 60px;
+  font-size: 3rem;
+  margin-top: 12px;
+  padding-left: 37px;
+}

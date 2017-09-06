@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import ChessClock from '../chessClock/ChessClock';
 import { showChallengeModal } from '../../actions';
 
-class MeetingPlayerList extends Component {
+class MeetingPlayer extends Component {
 
   render(){
+    console.log('in meeting player ', this.props.player);
     return (
       <tr key={this.props.player.player_id}>
         <td>
@@ -19,16 +20,21 @@ class MeetingPlayerList extends Component {
         </td>
         <td>
           <ChessClock
-            id={this.props.player.player_id}
+            player={this.props.player}
             timeIn={this.props.player.time_in}
             timeOut={this.props.player.time_out}/>
         </td>
         <td>
           <a
             className="chess-btn btn"
-            onClick={this.props.onChallengeGameClick}
+            onClick={() => this.props.onChallengeGameClick(this.props.player)}
           >
-            ?
+            <i
+              id="challengeIcon"
+              className="material-icons right"
+            >
+              {this.props.player.challenge_game === null ? "help" :
+              this.props.player.challenge_game ? "check_circle" : "cancel"}</i>
           </a>
         </td>
       </tr>
@@ -43,10 +49,10 @@ function mapStateToProps(state, { player }) {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onChallengeGameClick: () => {
-      dispatch(showChallengeModal(true))
+    onChallengeGameClick: (player) => {
+      dispatch(showChallengeModal(true, player))
     }
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MeetingPlayerList);
+export default connect(mapStateToProps, mapDispatchToProps)(MeetingPlayer);

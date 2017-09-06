@@ -43,7 +43,7 @@ class PlayerForm extends Component {
           <Link to="/" className="red btn-flat white-text">
             Cancel
           </Link>
-         <button type="submit" className="teal btn-flat right white-text">
+         <button type="submit" className="green btn-flat right white-text">
             Add Player
             <i className="material-icons right">done</i>
           </button>

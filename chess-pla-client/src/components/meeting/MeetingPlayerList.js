@@ -5,6 +5,7 @@ import MeetingPlayer from './MeetingPlayer';
 class MeetingPlayerList extends Component {
 
   render(){
+    console.log('in player list ', this.props.meeting.allPlayers);
     return (
       <div id="meeting-players" className="chess-table">
         <h4 className="center-align">Players</h4>

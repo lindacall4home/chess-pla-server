@@ -38,10 +38,36 @@ router.get('/:id', function(req,res,next){
     .from('meeting')
     .innerJoin('session_player', 'meeting.session_id', 'session_player.session_id')
     .innerJoin('player', 'session_player.player_id', 'player.id')
-    .leftJoin('meeting_player', 'meeting.id', 'meeting_player.meeting_id')
+    .leftOuterJoin('meeting_player', function () {
+      this.on('meeting.id', '=', 'meeting_player.meeting_id')
+      .andOn('player.id', '=', 'meeting_player.player_id')
+    })
     .where('meeting.id', req.params.id)
-    .then(data =>res.send(data))
+    .then(data => {
+      console.log('sending meeting players ', data);
+      res.send(data);
+    })
     .catch(err => next(err))
 });
+//
+// router.post('/', validate, (req, res, next) => {
+//   knex('player')
+//     .insert({
+//       first_name: req.body.first_name,
+//       last_name: req.body.last_name,
+//       alias: req.body.alias,
+//       birthday: req.body.birthday})
+//     .returning('*')
+//     .then(players => {
+//       knex('session_player')
+//         .insert({
+//           session_id: req.body.session_id,
+//           player_id: players[0].id
+//         })
+//         .returning('*')
+//         .then(sessions => res.json(players[0]))
+//       })
+//     .catch(err => next(err))
+// });
 
 module.exports = router;
