@@ -7,10 +7,8 @@ import 'react-date-picker2/index.css';
 import Header from './Header';
 import Home from './Home';
 import Register from './registration/Register';
+import MeetingsHome from './MeetingsHome';
 import Meeting from './meeting/Meeting';
-
-const Games = () => <h2>Games</h2>;
-const Players = () => <h2>Players</h2>;
 
 class App extends Component {
 
@@ -29,8 +27,7 @@ class App extends Component {
           <div>
             <Route exact path="/" component={Home} />
             <Route path="/register" component={Register} />
-            <Route path="/games" component={Games} />
-            <Route path="/players" component={Players} />
+            <Route path="/meetingshome" component={MeetingsHome} />
             <Route path="/meeting" component={Meeting} />
           </div>
         </div>

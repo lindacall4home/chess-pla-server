@@ -4,7 +4,9 @@ import {
   SET_CURRENT_PLAYER,
   SET_TIME_IN_OUT,
   SHOW_CHALLENGE_MODAL,
-  SET_PLAY_CHALLENGE_GAME
+  SET_PLAY_CHALLENGE_GAME,
+  SET_GAME_RESULT,
+  FETCH_MEETING_GAMES,
  } from '../actions/types';
 
 export default function(state = {
@@ -12,6 +14,8 @@ export default function(state = {
   showChallengeModal: false,
   currentPlayer: {},
   allPlayers: [],
+  allGames: [],
+  showPlayers: true
   },
   action){
 
@@ -84,6 +88,30 @@ export default function(state = {
         allPlayers: challengePlayerArray,
         showChallengeModal: false,
         currentPlayer: updatedPlayer
+      }
+
+    case FETCH_MEETING_GAMES:
+      return {
+        ...state,
+        allGames: action.allGames
+      }
+
+    case SET_GAME_RESULT:
+        let updatedGame = action.game;
+        const newGameArray =  state.allGames.map( (game) => {
+        if(game.game_id !== action.game.game_id){
+          return game;
+        }
+        updatedGame = {
+            ...game,
+            game_result: action.game_result
+        }
+        return updatedGame;
+      });
+
+      return {
+        ...state,
+        allGames: newGameArray
       }
 
     default:

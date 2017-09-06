@@ -10,6 +10,8 @@ import {
   UPDATE_MEETING_PLAYER,
   SET_TIME_IN_OUT,
   SHOW_CHALLENGE_MODAL,
+  FETCH_MEETING_GAMES,
+  SET_GAME_RESULT,
   SET_PLAY_CHALLENGE_GAME,
 } from './types';
 
@@ -84,4 +86,22 @@ export const updateMeetingPlayer = (meetingPlayer) => async dispatch => {
   console.log('update meeting player ', meetingPlayer);
   await axios.post('/api/meeting-players/', meetingPlayer);
   // dispatch( { type: UPDATE_MEETING_PLAYER, meetingPlayer: meetingPlayer});
+};
+
+export const fetchMeetingGames = meetingId => async dispatch => {
+  const res = await axios.get('/api/meeting-games/' + meetingId);
+  console.log('fetch meeting games', res.data);
+  dispatch( { type: FETCH_MEETING_GAMES, allGames: res.data });
+};
+
+export const addMeetingGames = (allGames, meetingId) => async dispatch => {
+  await axios.post('/api/meeting-games', allGames);
+  const res = await axios.get('/api/meeting-games/' + meetingId);
+  dispatch( { type: FETCH_MEETING_GAMES, allGames: res.data });
+};
+
+export const setGameResult = (game, result) => async dispatch => {
+  console.log('set game result ', game, result);
+  await axios.patch('/api/meeting-games/', {game: game, game_result: result});
+  dispatch( { type: SET_GAME_RESULT, game: game, game_result: result});
 };

@@ -47,14 +47,3 @@ router.post('/',  (req, res, next) => {
 
 
 module.exports = router;
-
-// function validate(req, res, next) {
-//   const errors = [];
-//   ['first_name', 'last_name', 'alias', 'birthday'].forEach(field => {
-//     if (!req.body[field] || req.body[field].trim() === '') {
-//       errors.push({field: field, messages: ["cannot be blank"], sent: req.body})
-//     }
-//   })
-//   if (errors.length) return res.status(422).json({errors})
-//   next()
-// };

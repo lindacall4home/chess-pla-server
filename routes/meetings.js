@@ -49,25 +49,5 @@ router.get('/:id', function(req,res,next){
     })
     .catch(err => next(err))
 });
-//
-// router.post('/', validate, (req, res, next) => {
-//   knex('player')
-//     .insert({
-//       first_name: req.body.first_name,
-//       last_name: req.body.last_name,
-//       alias: req.body.alias,
-//       birthday: req.body.birthday})
-//     .returning('*')
-//     .then(players => {
-//       knex('session_player')
-//         .insert({
-//           session_id: req.body.session_id,
-//           player_id: players[0].id
-//         })
-//         .returning('*')
-//         .then(sessions => res.json(players[0]))
-//       })
-//     .catch(err => next(err))
-// });
 
 module.exports = router;
