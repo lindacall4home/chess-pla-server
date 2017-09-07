@@ -5,7 +5,7 @@ import Pairing from './Pairing';
 class PairingList extends Component {
 
   render(){
-    console.log('in pairing list ', this.props.meeting.allPairings, this.props.meeting.allPairings, this.props.meeting.showPlayers);
+    console.log('in pairing list ', this.props.meeting.allGames, this.props.meeting.allPlayers, this.props.meeting.showPlayers);
     if(this.props.meeting.showPlayers){
       return null;
     }

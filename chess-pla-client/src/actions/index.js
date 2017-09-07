@@ -1,5 +1,5 @@
 import axios from 'axios';
-import 
+import PairingLogic from '../logic/PairingLogic';
 import {
   FETCH_CURRENT_MEETINGS,
   FETCH_CURRENT_SESSION,
@@ -114,7 +114,11 @@ export const setShowPlayers = (show) => async dispatch => {
   dispatch( { type: SET_SHOW_PLAYERS, show: show});
 };
 
-export const pairPlayers = () => async dispatch => {
-  console.log('pair players ');
-  dispatch( { type: PAIR_PLAYERS });
+export const pairPlayers = (meetingPlayers, allGames, meetingId) => async dispatch => {
+  console.log('pair players ', meetingPlayers, allGames, meetingId);
+  let pairingLogic = new PairingLogic();
+  let newPairings = pairingLogic.createPlayerPairings(meetingPlayers, allGames, meetingId);
+  console.log('new pairings ', newPairings);
+  await axios.post('/api/meeting-games/', newPairings);
+  dispatch( { type: PAIR_PLAYERS, newPairings: newPairings });
 };

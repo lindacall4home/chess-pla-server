@@ -38,7 +38,7 @@ router.get('/:id', function(req,res,next){
 router.post('/',  (req, res, next) => {
   console.log("in post game ", req.body);
   knex
-    .insert(req.body.allGames, 'id')
+    .insert(req.body, 'id')
     .into('game')
     .then(ids => res.json(ids))
     .catch(err => next(err))

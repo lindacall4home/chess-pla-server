@@ -1,19 +1,19 @@
 'use strict'
 
-class PairingLogic {
-
-  createPlayerPairings(meetingPlayers, allGames, meetingId){
+class PairingLogic{
+  createPlayerPairings (meetingPlayers, allGames, meetingId) {
+    console.log('in create pairings ', meetingPlayers, allGames, meetingId);
     let pairings = [];
 
-    let gamesByBlackPlayer = getGamesByPlayer(allGames, "black_player_id");
-    let gamesByWhitePlayer = getGamesByPlayer(allGames, "white_player_id");
+    let gamesByBlackPlayer = this.getGamesByPlayer(allGames, "black_player_id");
+    let gamesByWhitePlayer = this.getGamesByPlayer(allGames, "white_player_id");
 
     let gamePlayers = meetingPlayers.filter(player => player.challenge_game);
 
     while(gamePlayers.length > 1){
       let player = gamePlayers[0];
 
-      opponentCount = getOpponentCount(gamesByWhitePlayer[player.player_id], gamesByBlackPlayer[player.player_id])
+      let opponentCount = this.getOpponentCount(gamesByWhitePlayer[player.player_id] || [], gamesByBlackPlayer[player.player_id] || [])
 
       let opponent = gamePlayers[1];
       let opponentIndex = 1;
@@ -43,7 +43,7 @@ class PairingLogic {
         black_player_id: player.player_id,
         black_player_rank: player.current_rank,
         white_player_id: opponent.player_id,
-        white_player_rank: opponent.rank,
+        white_player_rank: opponent.current_rank,
         meeting_id: meetingId
       }
 
@@ -51,26 +51,28 @@ class PairingLogic {
       gamePlayers.splice(opponentIndex, 1);
       gamePlayers.splice(0, 1);
     }
+    console.log(' pairings ', pairings);
 
     return pairings;
-  }
+  };
 
-  getOpponentCount(whiteGames, blackGames){
-    let opponents = games.reduce((acc, whiteGames) => {
-      if(acc[black_player_id] === undefined){
-        acc[black_player_id] = 1;
+  getOpponentCount(whiteGames, blackGames) {
+    console.log('in get opponent count ', whiteGames, blackGames);
+    let opponents = whiteGames.reduce((acc, game) => {
+      if(acc[game.black_player_id] === undefined){
+        acc[game.black_player_id] = 1;
       }
       else {
-        acc[black_player_id]++;
+        acc[game.black_player_id]++;
       }
     }, {});
 
-    opponents = games.reduce((acc, blackGames) => {
-      if(acc[white_player_id] === undefined){
-        acc[white_player_id] = 1;
+    opponents = blackGames.reduce((acc, game) => {
+      if(acc[game.white_player_id] === undefined){
+        acc[game.white_player_id] = 1;
       }
       else {
-        acc[white_player_id]++;
+        acc[game.white_player_id]++;
       }
     }, opponents);
 
@@ -78,7 +80,7 @@ class PairingLogic {
   }
 
 
-  getGamesByPlayer(games, keyName){
+ getGamesByPlayer(games, keyName){
     return games.reduce((acc, game) => {
       if(acc[keyName] === undefined){
         acc[keyName] = [];

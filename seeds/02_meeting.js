@@ -11,6 +11,13 @@ exports.seed = function(knex, Promise) {
       {id: 4, date: '09-18-2017', session_id: 2},
       {id: 5, date: '09-25-2017', session_id: 2},
       {id: 6, date: '10-02-2017', session_id: 2},
+      {id: 7, date: '10-02-2017', session_id: 2},
+      {id: 8, date: '10-02-2017', session_id: 2},
+      {id: 9, date: '10-02-2017', session_id: 2},
+      {id: 10, date: '10-02-2017', session_id: 2},
+      {id: 11, date: '10-02-2017', session_id: 2},
+      {id: 12, date: '10-02-2017', session_id: 2},
+      {id: 13, date: '10-02-2017', session_id: 2},
     ])
     .then(() => {
       return knex.raw("SELECT setval('meeting_id_seq', (SELECT MAX(id) FROM meeting))");

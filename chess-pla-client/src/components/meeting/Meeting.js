@@ -11,18 +11,19 @@ import { bindActionCreators } from 'redux'
 class Meeting extends React.Component {
 
   componentDidMount(){
-    this.props.actions.fetchMeetingPlayers(this.props.meeting.meeting_id);
-    this.props.actions.fetchMeetingGames(this.props.meeting.meeting_id);
+    this.props.actions.fetchMeetingPlayers(this.props.meeting.currentMeeting.meeting_id);
+    this.props.actions.fetchMeetingGames(this.props.meeting.currentMeeting.meeting_id);
   }
 
   render(){
+    console.log('in Meeting.js ', this.props.meeting);
     return (
       <div>
         <h4 className="center-align chess-page-header">
           Eldorado K-8 Chess Club
         </h4>
         <h5 className="center-align chess-page-sub-header">
-          {new Date(this.props.meeting.date).toDateString()}
+          {new Date(this.props.meeting.currentMeeting.date).toDateString()}
         </h5>
         <div className="flex-horizontal">
           <a
@@ -35,7 +36,9 @@ class Meeting extends React.Component {
           <a
             className="waves-effect waves-light"
             style={{color: 'white', fontSize: '17px'}}
-            onClick={() => this.props.onPairPlayers()}
+            onClick={() => {
+              console.log('click on pair players');
+              this.props.onPairPlayers(this.props.meeting)}}
           >
             Pair Players
           </a>
@@ -58,9 +61,7 @@ class Meeting extends React.Component {
 }
 
 function mapStateToProps({ meeting }){
-  return {
-    meeting: meeting.currentMeeting
-  };
+  return {meeting};
 }
 
 const mapDispatchToProps = dispatch => {
@@ -68,8 +69,9 @@ const mapDispatchToProps = dispatch => {
     onShowPlayers: show => {
       dispatch(setShowPlayers(show))
     },
-    onPairPlayers: () => {
-      dispatch(pairPlayers())
+    onPairPlayers: (meeting) => {
+      console.log('in pair dispatch ', meeting);
+      dispatch(pairPlayers(meeting.allPlayers, meeting.allGames, meeting.currentMeeting.meeting_id))
     },
     actions: bindActionCreators(actions, dispatch)
   }
