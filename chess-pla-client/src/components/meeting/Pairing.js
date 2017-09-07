@@ -9,13 +9,13 @@ class Pairing extends Component {
     return (
       <tr key={this.props.game.game_id}>
         <td>
-          {this.props.game.board}
+          {this.props.game.board_num}
         </td>
         <td>
-          {this.props.game.black_alias + "(" + this.props.game.black_player_rank + ")"}
+          {this.props.game.black_first_name + " " + this.props.game.black_last_name + "(" + this.props.game.black_player_rank + ")"}
         </td>
         <td>
-        {this.props.game.white_alias + "(" + this.props.game.white_player_rank + ")"}
+        {this.props.game.white_first_name + " " + this.props.game.white_last_name +"(" + this.props.game.white_player_rank + ")"}
         </td>
         <td>
           <a

@@ -4,7 +4,9 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../knex');
 
-router.get('/:id', function(req,res,next){
+router.get('/:meeting_id', function(req,res,next){
+  console.log('in get meeting games route', req.params.meeting_id);
+
   knex
     .select(
       'meeting.id as meeting_id',
@@ -26,7 +28,7 @@ router.get('/:id', function(req,res,next){
     .innerJoin('game', 'meeting.id', 'game.meeting_id')
     .innerJoin('player as black_player', 'black_player_id', 'black_player.id')
     .innerJoin('player as white_player', 'white_player_id', 'white_player.id')
-    .where('meeting.id', req.params.id)
+    .where('meeting.id', req.params.meeting_id)
     .then(data => {
       console.log('sending meeting games ', data);
       res.send(data);

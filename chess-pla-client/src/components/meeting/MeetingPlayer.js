@@ -6,7 +6,6 @@ import { showChallengeModal } from '../../actions';
 class MeetingPlayer extends Component {
 
   render(){
-    console.log('in meeting player ', this.props.player);
     return (
       <tr key={this.props.player.player_id}>
         <td>

@@ -24,7 +24,6 @@ export default function(state = {
 
   switch (action.type){
     case FETCH_MEETING_PLAYERS:
-      console.log('in fetch meeting players ', action.meetingPlayers);
       return {
         ...state,
         allPlayers: action.meetingPlayers
@@ -96,7 +95,7 @@ export default function(state = {
     case FETCH_MEETING_GAMES:
       return {
         ...state,
-        allGames: action.allGames
+        allGames: action.meetingGames
       }
 
     case SET_GAME_RESULT:

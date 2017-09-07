@@ -4,7 +4,6 @@ import MeetingPlayerList from './MeetingPlayerList';
 import ChallengeModal from './ChallengeModal';
 import PairingList from './PairingList';
 import * as actions from '../../actions';
-import { setShowPlayers } from '../../actions';
 import { pairPlayers } from '../../actions';
 import { bindActionCreators } from 'redux'
 
@@ -16,7 +15,6 @@ class Meeting extends React.Component {
   }
 
   render(){
-    console.log('in Meeting.js ', this.props.meeting);
     return (
       <div>
         <h4 className="center-align chess-page-header">
@@ -25,32 +23,7 @@ class Meeting extends React.Component {
         <h5 className="center-align chess-page-sub-header">
           {new Date(this.props.meeting.currentMeeting.date).toDateString()}
         </h5>
-        <div className="flex-horizontal">
-          <a
-            className="waves-effect waves-light"
-            style={{color: 'white', fontSize: '17px'}}
-            onClick={() => this.props.onShowPlayers(true)}
-          >
-            Players
-          </a>
-          <a
-            className="waves-effect waves-light"
-            style={{color: 'white', fontSize: '17px'}}
-            onClick={() => {
-              console.log('click on pair players');
-              this.props.onPairPlayers(this.props.meeting)}}
-          >
-            Pair Players
-          </a>
-          <a
-            className="waves-effect waves-light"
-            style={{color: 'white', fontSize: '17px'}}
-            onClick={() => this.props.onShowPlayers(false)}
-          >
-            Games
-          </a>
-        </div>
-        <div className="flex-horizontal">
+        <div>
           <ChallengeModal/>
           <MeetingPlayerList/>
           <PairingList/>
@@ -60,15 +33,25 @@ class Meeting extends React.Component {
   }
 }
 
+// <div className="flex-horizontal">
+//
+//   <a
+//     className="waves-effect waves-light"
+//     style={{color: 'white', fontSize: '17px'}}
+//     onClick={() => {
+//       this.props.onPairPlayers(this.props.meeting)}}
+//   >
+//     Pair Players
+//   </a>
+//
+// </div>
+
 function mapStateToProps({ meeting }){
   return {meeting};
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onShowPlayers: show => {
-      dispatch(setShowPlayers(show))
-    },
     onPairPlayers: (meeting) => {
       console.log('in pair dispatch ', meeting);
       dispatch(pairPlayers(meeting.allPlayers, meeting.allGames, meeting.currentMeeting.meeting_id))

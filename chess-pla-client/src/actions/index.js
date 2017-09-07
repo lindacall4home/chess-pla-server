@@ -20,19 +20,16 @@ import {
 
 export const fetchCurrentMeetings = () => async dispatch => {
   const res = await axios.get('/api/meetings/');
-  console.log('meetings', res.data);
   dispatch( { type: FETCH_CURRENT_MEETINGS, meetings: res.data });
 };
 
 export const fetchCurrentSession = () => async dispatch => {
   const res = await axios.get('/api/current-session');
-  console.log('fetch current session ', res.data);
   dispatch( { type: FETCH_CURRENT_SESSION, currentSession: res.data });
 };
 
 export const fetchCurrentPlayers = () => async dispatch => {
   const res = await axios.get('/api/current-players');
-  console.log('session players', res.data);
   dispatch( { type: FETCH_CURRENT_PLAYERS, currentPlayers: res.data });
 };
 
@@ -51,13 +48,11 @@ export const setCurrentPlayer = player => async dispatch => {
 };
 
 export const fetchMeetingPlayers = meetingId => async dispatch => {
-  const res = await axios.get('/api/meetings/' + meetingId);
-  console.log('fetch meeting players', res.data);
+  const res = await axios.get('/api/meeting-players/' + meetingId);
   dispatch( { type: FETCH_MEETING_PLAYERS, meetingPlayers: res.data });
 };
 
 export const setTimeInOut = (player, timeIn, timeOut) => async dispatch => {
-  console.log('set time in/out ', player, timeIn, timeOut);
   await axios.post('/api/meeting-players/',
     {
       player: player,
@@ -69,12 +64,10 @@ export const setTimeInOut = (player, timeIn, timeOut) => async dispatch => {
 };
 
 export const showChallengeModal = (show, player) => async dispatch => {
-  console.log('show challenge modal ', show, player);
   dispatch( { type: SHOW_CHALLENGE_MODAL, show: show, player: player});
 };
 
 export const setPlayChallengeGame = (play, player) => async dispatch => {
-  console.log('set play challenge game ', play, player);
   await axios.post('/api/meeting-players/',
     {
       player: player,
@@ -93,8 +86,7 @@ export const updateMeetingPlayer = (meetingPlayer) => async dispatch => {
 
 export const fetchMeetingGames = meetingId => async dispatch => {
   const res = await axios.get('/api/meeting-games/' + meetingId);
-  console.log('fetch meeting games', res.data);
-  dispatch( { type: FETCH_MEETING_GAMES, allGames: res.data });
+  dispatch( { type: FETCH_MEETING_GAMES, meetingGames: res.data });
 };
 
 export const addMeetingGames = (allGames, meetingId) => async dispatch => {
@@ -104,13 +96,11 @@ export const addMeetingGames = (allGames, meetingId) => async dispatch => {
 };
 
 export const setGameResult = (game, result) => async dispatch => {
-  console.log('set game result ', game, result);
   await axios.patch('/api/meeting-games/', {game: game, game_result: result});
   dispatch( { type: SET_GAME_RESULT, game: game, game_result: result});
 };
 
 export const setShowPlayers = (show) => async dispatch => {
-  console.log('set show players ', show);
   dispatch( { type: SET_SHOW_PLAYERS, show: show});
 };
 

@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import '../App.css';
 import 'react-date-picker2/index.css';
 import Header from './Header';
 import Home from './Home';
 import Register from './registration/Register';
 import MeetingsHome from './MeetingsHome';
 import Meeting from './meeting/Meeting';
+import '../App.css';
 
 class App extends Component {
 

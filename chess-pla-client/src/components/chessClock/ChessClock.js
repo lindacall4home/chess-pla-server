@@ -7,13 +7,11 @@ class ChessClock extends React.Component {
 
   checkIn = () => {
     this.playSound();
-    console.log('checkin ', this.props.player, this.formatTime(new Date()), null);
     this.props.onInOutClick(this.props.player, this.formatTime(new Date()), null);
   }
 
   checkOut = () => {
     if(this.props.timeIn !== null){
-      console.log('checkout ', this.props.player, this.props.timeIn, this.formatTime(new Date()));
       this.playSound();
       this.props.onInOutClick(this.props.player, this.props.timeIn, this.formatTime(new Date()));
     }
@@ -52,7 +50,6 @@ class ChessClock extends React.Component {
   }
 
   render(){
-    console.log("chess clock ", this.props.timeIn, this.props.timeOut, this.props.player);
     return (
       <div id="clock">
         <div className="switches">

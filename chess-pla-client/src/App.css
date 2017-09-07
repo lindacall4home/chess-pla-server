@@ -35,13 +35,20 @@ a.brand-logo{
 }
 
 .chess-table{
-  width: 40%;
-  overflow:auto;
-  height: 400px;
-  background-color: white;
+  box-shadow: 5px 5px 5px rgba(21, 22, 20, 0.97);
   margin-top:40px;
   border-radius: 15px;
-  box-shadow: 5px 5px 5px rgba(21, 22, 20, 0.97);
+}
+
+.chess-table-inner{
+  height: 530px;
+  overflow:auto;
+  background-color: white;
+
+}
+
+.row .col{
+  padding: 0px;
 }
 
 .chess-table-header{
@@ -77,6 +84,16 @@ a.brand-logo{
   background-color: #e4d72d;
 }
 
+.chess-link{
+  color: 'white';
+  fontSize: '17px';
+}
+
+.chess-table-header-link{
+  color: white;
+  margin-top: -80px;
+}
+
 /*.chess-form-label{
   margin-left: 10px;
   font-size: 15px;
@@ -98,10 +115,6 @@ table{
 
 .field-error{
   margin-bottom: 20px;
-}
-
-#meeting-players{
-  width: 60%;
 }
 
 .chess-modal{
