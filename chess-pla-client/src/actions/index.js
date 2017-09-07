@@ -1,4 +1,5 @@
 import axios from 'axios';
+import 
 import {
   FETCH_CURRENT_MEETINGS,
   FETCH_CURRENT_SESSION,
@@ -14,7 +15,7 @@ import {
   SET_GAME_RESULT,
   SET_PLAY_CHALLENGE_GAME,
   SET_SHOW_PLAYERS,
-  SET_RANK_BY_AGE
+  PAIR_PLAYERS
 } from './types';
 
 export const fetchCurrentMeetings = () => async dispatch => {
@@ -25,7 +26,7 @@ export const fetchCurrentMeetings = () => async dispatch => {
 
 export const fetchCurrentSession = () => async dispatch => {
   const res = await axios.get('/api/current-session');
-  console.log('session ', res.data);
+  console.log('fetch current session ', res.data);
   dispatch( { type: FETCH_CURRENT_SESSION, currentSession: res.data });
 };
 
@@ -35,7 +36,7 @@ export const fetchCurrentPlayers = () => async dispatch => {
   dispatch( { type: FETCH_CURRENT_PLAYERS, currentPlayers: res.data });
 };
 
-export const addNewSessionPlayer = (newPlayer, history) => async dispatch => {
+export const addNewSessionPlayer = (newPlayer, rankByAge, history) => async dispatch => {
   const res = await axios.post('/api/current-players', newPlayer);
   history.push('/');
   dispatch( { type: ADD_NEW_SESSION_PLAYER, newPlayer: res.data });
@@ -113,7 +114,7 @@ export const setShowPlayers = (show) => async dispatch => {
   dispatch( { type: SET_SHOW_PLAYERS, show: show});
 };
 
-export const setRankByAge = (rankByAge) => async dispatch => {
-  console.log('set rank by age ', rankByAge);
-  dispatch( { type: SET_RANK_BY_AGE, rankByAge : rankByAge});
+export const pairPlayers = () => async dispatch => {
+  console.log('pair players ');
+  dispatch( { type: PAIR_PLAYERS });
 };

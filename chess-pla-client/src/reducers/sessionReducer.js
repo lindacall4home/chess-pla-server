@@ -6,6 +6,7 @@ import {
 
 export default function(state = {
   currentSession: {},
+  rankPlayersByAge: true,
   meetingsById: {},
   allMeetings: [],
   currentPlayers: []},
@@ -29,6 +30,7 @@ export default function(state = {
       return {
         ...state,
         currentSession: action.currentSession,
+        rankByAge: action.currentSession.game_result === null ? true : false
       }
 
     case FETCH_CURRENT_PLAYERS:

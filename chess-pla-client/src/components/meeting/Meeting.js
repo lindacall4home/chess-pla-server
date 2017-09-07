@@ -5,6 +5,7 @@ import ChallengeModal from './ChallengeModal';
 import PairingList from './PairingList';
 import * as actions from '../../actions';
 import { setShowPlayers } from '../../actions';
+import { pairPlayers } from '../../actions';
 import { bindActionCreators } from 'redux'
 
 class Meeting extends React.Component {
@@ -34,6 +35,13 @@ class Meeting extends React.Component {
           <a
             className="waves-effect waves-light"
             style={{color: 'white', fontSize: '17px'}}
+            onClick={() => this.props.onPairPlayers()}
+          >
+            Pair Players
+          </a>
+          <a
+            className="waves-effect waves-light"
+            style={{color: 'white', fontSize: '17px'}}
             onClick={() => this.props.onShowPlayers(false)}
           >
             Games
@@ -59,6 +67,9 @@ const mapDispatchToProps = dispatch => {
   return {
     onShowPlayers: show => {
       dispatch(setShowPlayers(show))
+    },
+    onPairPlayers: () => {
+      dispatch(pairPlayers())
     },
     actions: bindActionCreators(actions, dispatch)
   }

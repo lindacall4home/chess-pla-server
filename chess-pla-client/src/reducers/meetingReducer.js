@@ -7,8 +7,7 @@ import {
   SET_PLAY_CHALLENGE_GAME,
   SET_GAME_RESULT,
   FETCH_MEETING_GAMES,
-  SET_SHOW_PLAYERS,
-  SET_RANK_BY_AGE
+  SET_SHOW_PLAYERS
  } from '../actions/types';
 
 export default function(state = {
@@ -121,12 +120,6 @@ export default function(state = {
       return{
         ...state,
         showPlayers: action.show
-      }
-
-    case SET_RANK_BY_AGE:
-      return{
-        ...state,
-        rankByAge: action.rankByAge
       }
 
     default:
