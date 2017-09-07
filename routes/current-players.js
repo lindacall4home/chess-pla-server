@@ -17,6 +17,7 @@ router.get('/', function(req, res, next){
   .innerJoin('player', 'player.id', 'player_id')
   .innerJoin('session', 'session.id', 'session_id')
   .where('is_current', true)
+  .orderBy('current_rank')
   .then(players => {
     console.log('session players route ', players);
     res.json(players)})

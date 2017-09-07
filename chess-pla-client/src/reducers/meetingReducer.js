@@ -4,7 +4,11 @@ import {
   SET_CURRENT_PLAYER,
   SET_TIME_IN_OUT,
   SHOW_CHALLENGE_MODAL,
-  SET_PLAY_CHALLENGE_GAME
+  SET_PLAY_CHALLENGE_GAME,
+  SET_GAME_RESULT,
+  FETCH_MEETING_GAMES,
+  SET_SHOW_PLAYERS,
+  PAIR_PLAYERS
  } from '../actions/types';
 
 export default function(state = {
@@ -12,12 +16,14 @@ export default function(state = {
   showChallengeModal: false,
   currentPlayer: {},
   allPlayers: [],
+  allGames: [],
+  showPlayers: true,
+  rankByAge: true
   },
   action){
 
   switch (action.type){
     case FETCH_MEETING_PLAYERS:
-      console.log('in fetch meeting players ', action.meetingPlayers);
       return {
         ...state,
         allPlayers: action.meetingPlayers
@@ -85,6 +91,42 @@ export default function(state = {
         showChallengeModal: false,
         currentPlayer: updatedPlayer
       }
+
+    case FETCH_MEETING_GAMES:
+      return {
+        ...state,
+        allGames: action.meetingGames
+      }
+
+    case SET_GAME_RESULT:
+        let updatedGame = action.game;
+        const newGameArray =  state.allGames.map( (game) => {
+        if(game.game_id !== action.game.game_id){
+          return game;
+        }
+        updatedGame = {
+            ...game,
+            game_result: action.game_result
+        }
+        return updatedGame;
+      });
+
+      return {
+        ...state,
+        allGames: newGameArray
+      }
+
+    case SET_SHOW_PLAYERS:
+      return{
+        ...state,
+        showPlayers: action.show
+      }
+
+      case PAIR_PLAYERS:
+        return {
+          ...state,
+          allGames: action.newPairings
+        }
 
     default:
       return state;

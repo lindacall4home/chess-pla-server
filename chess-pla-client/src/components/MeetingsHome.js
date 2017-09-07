@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Ladder from './Ladder'
+import MeetingList from './MeetingList'
 
-class Home extends Component {
+class MeetingsHome extends Component {
 
   render(){
 
@@ -15,7 +15,7 @@ class Home extends Component {
           2017-2018
         </h5>
         <div className="flex-horizontal">
-          <Ladder/>
+          <MeetingList/>
         </div>
       </div>
     );
@@ -26,4 +26,4 @@ function mapStateToProps({ session }) {
   return { session };
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(MeetingsHome);
