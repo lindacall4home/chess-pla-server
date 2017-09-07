@@ -37,21 +37,35 @@ class PlayerForm extends Component {
 
   render(){
     return (
-      <div className="row">
-        <div className="flex-horizontal">
-          <form className="chess-form" onSubmit={this.props.handleSubmit}>
-            {this.renderFields()}
-            <Link to="/" className="chess-btn chess-btn-no btn-flat white-text">
-              Cancel
-            </Link>
-            <button
-              type="submit"
-              className="chess-btn chess-btn-yes btn-flat right white-text"
+      <div className="container">
+        <div className="row">
+          <div className="col s6 offset-s3 chess-table"
+            >
+            <h4 className="center-align chess-table-header">Register</h4>
+            <div className="chess-table-inner"
+              style={{height: "335px"}}>
+              <form
+                className="chess-form"
+                onSubmit={this.props.handleSubmit}
+                style={{lineHeight: "1", paddingTop: "10px"}}
               >
-              Add Player
-              <i className="material-icons right">done</i>
-            </button>
-          </form>
+                {this.renderFields()}
+                <button
+                  type="submit"
+                  className="chess-btn chess-btn-yes btn-flat left white-text"
+                  >
+                  Add Player
+                  <i className="material-icons right">done</i>
+                </button>
+                <Link to="/"
+                  className="chess-btn chess-btn-no btn-flat black-text white right"
+                  style={{border: "1px solid black"}}
+                >
+                  Cancel
+                </Link>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     );

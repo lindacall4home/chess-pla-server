@@ -18,10 +18,13 @@ class MeetingPlayer extends Component {
           {this.props.player.current_rank}
         </td>
         <td>
-          <ChessClock
-            player={this.props.player}
-            timeIn={this.props.player.time_in}
-            timeOut={this.props.player.time_out}/>
+          <div className="flex-horizontal">
+            <ChessClock
+              player={this.props.player}
+              timeIn={this.props.player.time_in}
+              timeOut={this.props.player.time_out}
+            />
+          </div>
         </td>
         <td>
           <a

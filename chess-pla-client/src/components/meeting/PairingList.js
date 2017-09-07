@@ -38,9 +38,7 @@ class PairingList extends Component {
                     <th>Board</th>
                     <th>Black Player</th>
                     <th>White Player</th>
-                    <th>Black Won</th>
-                    <th>White Won</th>
-                    <th>Draw</th>
+                    <th>Winner</th>
                   </tr>
                 </thead>
                 <tbody>

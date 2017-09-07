@@ -21,7 +21,8 @@ class ChallengeModal extends Component {
               <i className="material-icons right">done</i>
             </button>
             <button
-              className="chess-btn chess-btn-no btn-flat right white-text"
+              className="chess-btn chess-btn-no btn-flat right  white black-text"
+              style={{border: "1px solid black"}}
               onClick={() => this.props.onSetPlayChallengeGame(false, this.props.meeting.currentPlayer)}
             >
               Not today

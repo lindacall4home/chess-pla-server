@@ -37,7 +37,7 @@ a.brand-logo{
 .chess-table{
   box-shadow: 5px 5px 5px rgba(21, 22, 20, 0.97);
   margin-top:40px;
-  border-radius: 15px;
+  /*border-radius: 15px;*/
 }
 
 .chess-table-inner{
@@ -59,13 +59,13 @@ a.brand-logo{
   color: white;
 }
 
-.chess-form{
+/*.chess-form{
   background-color: white;
   width: 40%;
   margin-top:40px;
   border-radius: 15px;
   box-shadow: 5px 5px 5px rgba(21, 22, 20, 0.97);
-}
+}*/
 
 .chess-list{
   width: 40%;
