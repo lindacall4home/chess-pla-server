@@ -2,9 +2,6 @@
 
 ### Chess PLA is an application for use by school chess clubs
 
-![Screen Shot 2017-09-08 at 11.47.00 AM](/Users/lindacall/Documents/galvanize/capstone/chess-pla-server/wireframes/Screen Shot 2017-09-08 at 11.47.10 AM.png)
-
-![Screen Shot 2017-09-08 at 11.47.18 AM](/Users/lindacall/Documents/galvanize/capstone/chess-pla-server/wireframes/Screen Shot 2017-09-08 at 11.47.18 AM.png)
 
 
 
