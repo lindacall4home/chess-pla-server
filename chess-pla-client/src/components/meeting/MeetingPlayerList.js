@@ -30,7 +30,7 @@ class MeetingPlayerList extends Component {
                 </div>
               </div>
             </div>
-            <div className="row">
+            <div className="row" style={{height: "435px"}}>
               <div className="chess-table-inner" style={{marginTop: "-20px"}}>
                 <table className="bordered highlight centered">
                   <thead>
@@ -39,7 +39,7 @@ class MeetingPlayerList extends Component {
                       <th>Name</th>
                       <th>Rank</th>
                       <th>In/Out</th>
-                      <th>Challenge Game</th>
+                      <th>Challenge Game?</th>
                     </tr>
                   </thead>
                   <tbody>

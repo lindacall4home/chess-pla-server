@@ -20,23 +20,23 @@ class Pairing extends Component {
         <td>
           <a
             id="black-won"
-            className="chess-btn btn"
-            style={{backgroundColor: "black", border: "1px solid black", borderRadius: "100%"}}
             onClick={() => this.props.onResultClick(this.props.game, "Black")}
+            className={this.props.game.game_result === "Black" ||
+              this.props.game.game_result === null ? "chess-shown" : "chess-hidden"}
           >
           </a>
           <a
             id="white-won"
-            className="chess-btn btn"
-            style={{backgroundColor: "white", border: "1px solid black", borderRadius: "100%"}}
             onClick={() => this.props.onResultClick(this.props.game, "White")}
+            className={this.props.game.game_result === "White" ||
+              this.props.game.game_result === null ? "chess-shown" : "chess-hidden"}
           >
           </a>
           <a
             id="draw"
-            className="chess-btn btn"
-            style={{background: "linear-gradient(45deg, black, white)", border: "1px solid black", borderRadius: "100%"}}
              onClick={() => this.props.onResultClick(this.props.game, "Draw")}
+             className={this.props.game.game_result === "Draw" ||
+               this.props.game.game_result === null ? "chess-shown" : "chess-hidden"}
           >
           </a>
         </td>
