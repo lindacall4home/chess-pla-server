@@ -1,10 +1,15 @@
 'use strict';
 
 const express = require('express');
+require('./services/passport');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 8000;
 const cors = require('cors');
 const app = express();
+
+// const passport = require('passport');
+// const GoogleStrategy = require('passport-google-oauth20').Strategy;
+// const keys = require('./config/keys');
 
 app.use(cors());
 
@@ -13,6 +18,28 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
+require('./routes/auth')(app);
+
+// passport.use(new GoogleStrategy({
+//     clientID: keys.googleClientID,
+//     clientSecret: keys.googleClientSecret,
+//     callbackURL: '/auth/google/callback'
+//   },
+//   accessToken => {
+//     console.log(accessToken)
+//   }
+// ));
+//
+// app.get(
+//   '/auth/google',
+//   passport.authenticate('google', {
+//     scope: ['profile', 'email']
+//   })
+// );
+//
+// app.get('/auth/google/callback', passport.authenticate('google'));
+
 
 app.use(bodyParser.json());
 app.use('/api/current-session', require('./routes/current-session'));
