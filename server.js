@@ -1,15 +1,15 @@
 'use strict';
 
 const express = require('express');
-require('./services/passport');
+const cookieSession = require('cookie-session');
+const passport = require('passport');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 8000;
 const cors = require('cors');
 const app = express();
+const keys = require('./config/keys');
+require('./services/passport');
 
-// const passport = require('passport');
-// const GoogleStrategy = require('passport-google-oauth20').Strategy;
-// const keys = require('./config/keys');
 
 app.use(cors());
 
@@ -19,29 +19,20 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(bodyParser.json());
+
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [keys.cookieKey]
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 require('./routes/auth')(app);
 
-// passport.use(new GoogleStrategy({
-//     clientID: keys.googleClientID,
-//     clientSecret: keys.googleClientSecret,
-//     callbackURL: '/auth/google/callback'
-//   },
-//   accessToken => {
-//     console.log(accessToken)
-//   }
-// ));
-//
-// app.get(
-//   '/auth/google',
-//   passport.authenticate('google', {
-//     scope: ['profile', 'email']
-//   })
-// );
-//
-// app.get('/auth/google/callback', passport.authenticate('google'));
-
-
-app.use(bodyParser.json());
 app.use('/api/current-session', require('./routes/current-session'));
 app.use('/api/meetings', require('./routes/meetings'));
 app.use('/api/current-players', require('./routes/current-players'));
