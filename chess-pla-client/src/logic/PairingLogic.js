@@ -1,5 +1,3 @@
-'use strict'
-
 class PairingLogic{
   createPlayerPairings (meetingPlayers, allGames, meetingId) {
     console.log('in create pairings ', meetingPlayers, allGames, meetingId);

@@ -19,7 +19,6 @@ router.get('/', function(req, res, next){
   .where('is_current', true)
   .orderBy('current_rank')
   .then(players => {
-    console.log('session players route ', players);
     res.json(players)})
   .catch(err => next(err))
 });
