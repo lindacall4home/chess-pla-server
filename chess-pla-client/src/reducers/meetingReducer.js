@@ -41,29 +41,33 @@ export default function(state = {
         currentPlayer: action.player,
       }
 
-    case SET_TIME_IN_OUT:
+    case SET_TIME_IN_OUT: {
       let showChallenge = false;
+      let updatedPlayer = action.player;
       const inOutPlayerArray =  state.allPlayers.map( (player) => {
         if(player.player_id !== action.player.player_id){
           return player;
         }
-        if(player.challenge_game === null ||
-          player.challenge_game === undefined){
-          showChallenge = true;
-        }
-        return {
+        // if(player.challenge_game === null ||
+        //   player.challenge_game === undefined){
+        //   showChallenge = true;
+        // }
+        showChallenge = true;
+        updatedPlayer =  {
             ...player,
             time_in: action.timeIn,
             time_out: action.timeOut
         }
+        return updatedPlayer;
       });
 
       return {
         ...state,
         allPlayers: inOutPlayerArray,
         showChallengeModal: showChallenge,
-        currentPlayer: action.player
+        currentPlayer: updatedPlayer
       }
+    }
 
     case SHOW_CHALLENGE_MODAL:
       return{
@@ -72,7 +76,7 @@ export default function(state = {
         currentPlayer: action.player
       }
 
-    case SET_PLAY_CHALLENGE_GAME:
+    case SET_PLAY_CHALLENGE_GAME: {
         let updatedPlayer = action.player;
         const challengePlayerArray =  state.allPlayers.map( (player) => {
         if(player.player_id !== action.player.player_id){
@@ -91,6 +95,7 @@ export default function(state = {
         showChallengeModal: false,
         currentPlayer: updatedPlayer
       }
+    }
 
     case FETCH_MEETING_GAMES:
       return {

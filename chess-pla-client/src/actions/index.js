@@ -53,13 +53,13 @@ export const fetchMeetingPlayers = meetingId => async dispatch => {
 };
 
 export const setTimeInOut = (player, timeIn, timeOut) => async dispatch => {
-  await axios.post('/api/meeting-players/',
-    {
-      player: player,
-      challenge_game: player.challenge_game,
-      time_in: timeIn,
-      time_out: timeOut
-    });
+  // await axios.post('/api/meeting-players/',
+  //   {
+  //     player: player,
+  //     challenge_game: player.challenge_game,
+  //     time_in: timeIn,
+  //     time_out: timeOut
+  //   });
     dispatch( { type: SET_TIME_IN_OUT, player: player,  timeIn: timeIn, timeOut: timeOut});
 };
 
@@ -68,6 +68,7 @@ export const showChallengeModal = (show, player) => async dispatch => {
 };
 
 export const setPlayChallengeGame = (play, player) => async dispatch => {
+  console.log('in setPlayChallengeGame: ', player);
   await axios.post('/api/meeting-players/',
     {
       player: player,
