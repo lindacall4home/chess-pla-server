@@ -36,7 +36,6 @@ router.get('/:meeting_id', function(req,res,next){
 
 
 router.post('/',  (req, res, next) => {
-  console.log("in post meeting player ", req.body);
   knex('player')
     .from('meeting_player')
     .where({
@@ -46,6 +45,7 @@ router.post('/',  (req, res, next) => {
     .then(players => {
       if(players.length === 0)
       {
+        console.log('inserting player: ', req.body);
         knex('meeting_player')
           .insert({
             meeting_id: req.body.player.meeting_id,
@@ -58,6 +58,7 @@ router.post('/',  (req, res, next) => {
         .then(players => res.json(players[0]))
       }
       else{
+        console.log('updating player: ', req.body);
         knex('meeting_player')
         .where({
           meeting_id: req.body.player.meeting_id,

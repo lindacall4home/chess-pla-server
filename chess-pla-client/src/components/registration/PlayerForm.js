@@ -52,13 +52,13 @@ class PlayerForm extends Component {
                 {this.renderFields()}
                 <button
                   type="submit"
-                  className="chess-btn chess-btn-yes btn-flat left white-text"
+                  className="chess-btn chess-btn-yes btn-flat right white-text"
                   >
                   Add Player
                   <i className="material-icons right">done</i>
                 </button>
                 <Link to="/"
-                  className="chess-btn chess-btn-no btn-flat black-text white right"
+                  className="chess-btn chess-btn-no btn-flat black-text white left"
                   style={{border: "1px solid black"}}
                 >
                   Cancel
