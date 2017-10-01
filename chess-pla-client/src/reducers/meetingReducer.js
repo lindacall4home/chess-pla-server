@@ -128,6 +128,7 @@ export default function(state = {
       }
 
       case PAIR_PLAYERS:
+        console.log('in pair players');
         return {
           ...state,
           allGames: action.newPairings

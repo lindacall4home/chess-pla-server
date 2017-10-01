@@ -16,16 +16,26 @@ class MeetingPlayerList extends Component {
             <div className="row">
               <div className="col s12 chess-table-header">
                 <div className="row">
-                  <div className="col s2 offset-s5">
+                  <div className="col s1">
+                    <i className="material-icons left header-icon-left">    navigate_before
+                    </i>
+                    <a
+                      className="chess-table-header-link waves-effect waves-light header-link-left disabled"
+                    >
+                      Players
+                    </a>
+                  </div>
+                  <div className="col s2 offset-s4">
                     <h4 className="center-align">Players</h4>
                   </div>
                   <div className="col s1 offset-s11">
                     <a
-                      className="chess-table-header-link waves-effect waves-light"
+                      className="chess-table-header-link header-link-right waves-effect waves-light"
                       onClick={() => this.props.onShowPlayers(false)}
                     >
                       Games
                     </a>
+                    <i className="material-icons right header-icon-right">navigate_next</i>
                   </div>
                 </div>
               </div>

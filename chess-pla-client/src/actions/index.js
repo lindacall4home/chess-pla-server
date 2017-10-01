@@ -25,6 +25,7 @@ export const fetchCurrentMeetings = () => async dispatch => {
 
 export const fetchCurrentSession = () => async dispatch => {
   const res = await axios.get('/api/current-session');
+  console.log(res.data);
   dispatch( { type: FETCH_CURRENT_SESSION, currentSession: res.data });
 };
 
@@ -105,10 +106,10 @@ export const setShowPlayers = (show) => async dispatch => {
   dispatch( { type: SET_SHOW_PLAYERS, show: show});
 };
 
-export const pairPlayers = (meetingPlayers, allGames, meetingId) => async dispatch => {
-  console.log('pair players ', meetingPlayers, allGames, meetingId);
+export const pairPlayers = (meeting) => async dispatch => {
+  console.log('pair players ', meeting.allPlayers, meeting.meetingId);
   let pairingLogic = new PairingLogic();
-  let newPairings = pairingLogic.createPlayerPairings(meetingPlayers, allGames, meetingId);
+  let newPairings = pairingLogic.createPlayerPairings(meeting.allPlayers, [], meeting.meetingId);
   console.log('new pairings ', newPairings);
   await axios.post('/api/meeting-games/', newPairings);
   dispatch( { type: PAIR_PLAYERS, newPairings: newPairings });
