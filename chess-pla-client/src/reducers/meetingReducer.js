@@ -18,7 +18,7 @@ export default function(state = {
   allPlayers: [],
   allGames: [],
   showPlayers: true,
-  rankByAge: true
+  allowPairing: false
   },
   action){
 
@@ -98,9 +98,15 @@ export default function(state = {
     }
 
     case FETCH_MEETING_GAMES:
+      let gameResults = false;
+      if(action.meetingGames.length > 0 &&
+        action.meetingGames.some(game => game.game_result !== null)){
+        gameResults = true;
+      }
       return {
         ...state,
-        allGames: action.meetingGames
+        allGames: action.meetingGames,
+        allowPairing: !gameResults
       }
 
     case SET_GAME_RESULT:

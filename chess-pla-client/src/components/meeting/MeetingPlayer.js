@@ -9,9 +9,6 @@ class MeetingPlayer extends Component {
     return (
       <tr key={this.props.player.player_id}>
         <td>
-          {this.props.player.alias}
-        </td>
-        <td>
           {this.props.player.first_name + " " + this.props.player.last_name}
         </td>
         <td>

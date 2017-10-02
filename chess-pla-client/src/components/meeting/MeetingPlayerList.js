@@ -45,7 +45,6 @@ class MeetingPlayerList extends Component {
                 <table className="bordered highlight centered">
                   <thead>
                     <tr>
-                      <th>Alias</th>
                       <th>Name</th>
                       <th>Rank</th>
                       <th>In/Out</th>

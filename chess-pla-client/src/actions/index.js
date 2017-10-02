@@ -25,8 +25,7 @@ export const fetchCurrentMeetings = () => async dispatch => {
 
 export const fetchCurrentSession = () => async dispatch => {
   const res = await axios.get('/api/current-session');
-  console.log(res.data);
-  dispatch( { type: FETCH_CURRENT_SESSION, currentSession: res.data });
+  dispatch( { type: FETCH_CURRENT_SESSION, sessionData: res.data });
 };
 
 export const fetchCurrentPlayers = () => async dispatch => {
@@ -41,6 +40,7 @@ export const addNewSessionPlayer = (newPlayer, rankByAge, history) => async disp
 };
 
 export const setCurrentMeeting = meeting => async dispatch => {
+  console.log('in setCurrentMeeting: ', meeting);
   dispatch( { type: SET_CURRENT_MEETING, meeting: meeting });
 };
 
@@ -87,12 +87,13 @@ export const updateMeetingPlayer = (meetingPlayer) => async dispatch => {
 };
 
 export const fetchMeetingGames = meetingId => async dispatch => {
+  console.log('in fetchMeetingGames: ', res);
   const res = await axios.get('/api/meeting-games/' + meetingId);
   dispatch( { type: FETCH_MEETING_GAMES, meetingGames: res.data });
 };
 
 export const addMeetingGames = (allGames, meetingId) => async dispatch => {
-  await axios.post('/api/meeting-games', allGames);
+  await axios.post('/api/meeting-games', {meetingId: meetingId, games: allGames});
   const res = await axios.get('/api/meeting-games/' + meetingId);
   dispatch( { type: FETCH_MEETING_GAMES, allGames: res.data });
 };
@@ -106,11 +107,13 @@ export const setShowPlayers = (show) => async dispatch => {
   dispatch( { type: SET_SHOW_PLAYERS, show: show});
 };
 
-export const pairPlayers = (meeting) => async dispatch => {
-  console.log('pair players ', meeting.allPlayers, meeting.meetingId);
+export const pairPlayers = (meeting, session) => async dispatch => {
+  console.log('pair players ', meeting, session);
   let pairingLogic = new PairingLogic();
-  let newPairings = pairingLogic.createPlayerPairings(meeting.allPlayers, [], meeting.meetingId);
+  let newPairings = pairingLogic.createPlayerPairings(meeting.allPlayers, session.allGames, meeting.currentMeeting.meeting_id);
   console.log('new pairings ', newPairings);
-  await axios.post('/api/meeting-games/', newPairings);
-  dispatch( { type: PAIR_PLAYERS, newPairings: newPairings });
+  await axios.post('/api/meeting-games/', {games: newPairings, meetingId: meeting.currentMeeting.meeting_id});
+  console.log('ready to get pairings from db');
+  const res = await axios.get('/api/meeting-games/' + meeting.currentMeeting.meeting_id);
+  dispatch( { type: FETCH_MEETING_GAMES, meetingGames: res.data });
 };

@@ -60,7 +60,8 @@ class PairingList extends Component {
                   </tbody>
                 </table>
                   <a className="btn-floating btn-large waves-effect waves-light purple right"
-                  onClick={() => this.props.onPairPlayers(this.props.meeting)}><i className="material-icons">people</i></a>
+                  style={this.props.meeting.allowPairing ? {} : {display: "none"}}
+                  onClick={() => this.props.onPairPlayers(this.props.meeting, this.props.session )}><i className="material-icons">people</i></a>
 
               </div>
             </div>
@@ -72,8 +73,8 @@ class PairingList extends Component {
 }
 
 
-function mapStateToProps({ meeting }) {
-  return { meeting };
+function mapStateToProps({ meeting, session }) {
+  return { meeting, session };
 }
 
 const mapDispatchToProps = dispatch => {
@@ -81,10 +82,10 @@ const mapDispatchToProps = dispatch => {
     onShowPlayers: show => {
       dispatch(setShowPlayers(show))
     },
-    onPairPlayers: meeting => {
-      dispatch(pairPlayers(meeting))
+    onPairPlayers: (meeting, session) => {
+      console.log('in pair dispatch ', meeting, session);
+      dispatch(pairPlayers(meeting, session))
     },
-
   }
 }
 

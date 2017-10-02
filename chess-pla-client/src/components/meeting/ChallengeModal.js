@@ -5,7 +5,6 @@ import { setPlayChallengeGame, updateMeetingPlayer } from '../../actions';
 class ChallengeModal extends Component {
 
   render(){
-    console.log('in challengeModal show = ', this.props.meeting.showChallengeModal, this.props.meeting.currentPlayer);
     if(this.props.meeting.showChallengeModal){
       return (
         <div className="chess-modal">

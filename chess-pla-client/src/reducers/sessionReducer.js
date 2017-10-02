@@ -9,6 +9,7 @@ export default function(state = {
   rankPlayersByAge: true,
   meetingsById: {},
   allMeetings: [],
+  allGames: [],
   currentPlayers: []},
   action){
 
@@ -29,8 +30,10 @@ export default function(state = {
     case FETCH_CURRENT_SESSION:
       return {
         ...state,
-        currentSession: action.currentSession,
-        rankByAge: action.currentSession.game_result === null ? true : false
+        currentSession: {sessionId: action.sessionData.session_id,
+                         sessionName: action.sessionData.session_name},
+        rankByAge: action.sessionData[0].game_result === null ? true : false,
+        allGames: action.sessionData
       }
 
     case FETCH_CURRENT_PLAYERS:

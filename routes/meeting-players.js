@@ -28,6 +28,7 @@ router.get('/:meeting_id', function(req,res,next){
       .andOn('player.id', '=', 'meeting_player.player_id')
     })
     .where('meeting.id', req.params.meeting_id)
+    .orderBy('first_name')
     .then(data => {
       res.send(data);
     })

@@ -4,7 +4,6 @@ import MeetingPlayerList from './MeetingPlayerList';
 import ChallengeModal from './ChallengeModal';
 import PairingList from './PairingList';
 import * as actions from '../../actions';
-import { pairPlayers } from '../../actions';
 import { bindActionCreators } from 'redux'
 
 class Meeting extends React.Component {
@@ -46,16 +45,12 @@ class Meeting extends React.Component {
 //
 // </div>
 
-function mapStateToProps({ meeting }){
-  return {meeting};
+function mapStateToProps({ meeting, session }){
+  return { meeting, session };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onPairPlayers: (meeting) => {
-      console.log('in pair dispatch ', meeting);
-      dispatch(pairPlayers(meeting.allPlayers, meeting.allGames, meeting.currentMeeting.meeting_id))
-    },
     actions: bindActionCreators(actions, dispatch)
   }
 }
