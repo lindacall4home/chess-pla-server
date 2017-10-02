@@ -24,7 +24,7 @@ exports.seed = function(knex, Promise) {
       {id: 17, session_id: 2, player_id: 17, grade: 3, permission_form: true, paid: true, shirt_size: '', current_rank: 61},
       {id: 18, session_id: 2, player_id: 18, grade: 4, permission_form: true, paid: true, shirt_size: 'YM', current_rank: 30},
       {id: 19, session_id: 2, player_id: 19, grade: 3, permission_form: true, paid: true, shirt_size: 'YM', current_rank: 56},
-      {id: 20, session_id: 2, player_id: 20, grade: 3, permission_form: true, paid: true, shirt_size: 'YM', current_rank: 58},
+      {id: 20, session_id: 2, player_id: 20, grade: 3, permission_form: true, paid: true, shirt_size: 'YM', current_rank: 53},
       {id: 21, session_id: 2, player_id: 21, grade: 6, permission_form: true, paid: true, shirt_size: 'YXL', current_rank: 11},
       {id: 22, session_id: 2, player_id: 22, grade: 3, permission_form: true, paid: true, shirt_size: 'YM', current_rank: 46},
       {id: 23, session_id: 2, player_id: 23, grade: 5, permission_form: true, paid: true, shirt_size: 'S', current_rank: 17},
