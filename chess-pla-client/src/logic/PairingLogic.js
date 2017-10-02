@@ -1,13 +1,15 @@
 class PairingLogic{
   createPlayerPairings (meetingPlayers, allGames, meetingId) {
-    console.log('in create pairings ', meetingPlayers, allGames, meetingId);
     let pairings = [];
 
     let gamesByBlackPlayer = this.getGamesByPlayer(allGames, "black_player_id");
     let gamesByWhitePlayer = this.getGamesByPlayer(allGames, "white_player_id");
 
-    let gamePlayers = meetingPlayers.filter(player => player.challenge_game);
+    let gamePlayers = meetingPlayers
+      .filter(player => player.challenge_game)
+      .sort((player1, player2) => player1.current_rank - player2.current_rank);
 
+    let board = 1;
     while(gamePlayers.length > 1){
       let player = gamePlayers[0];
 
@@ -46,14 +48,15 @@ class PairingLogic{
         white_player_rank: opponent.current_rank,
         // white_first_name: opponent.first_name,
         // white_last_name: opponent.last_name,
-        meeting_id: meetingId
+        meeting_id: meetingId,
+        board_num: board
       }
 
       pairings.push(newGame);
       gamePlayers.splice(opponentIndex, 1);
       gamePlayers.splice(0, 1);
+      board++;
     }
-    console.log(' pairings ', pairings);
 
     return pairings;
   };

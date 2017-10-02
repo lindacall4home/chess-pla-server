@@ -28,6 +28,7 @@ router.get('/:meeting_id', function(req,res,next){
     .innerJoin('player as black_player', 'black_player_id', 'black_player.id')
     .innerJoin('player as white_player', 'white_player_id', 'white_player.id')
     .where('meeting.id', req.params.meeting_id)
+    .orderBy('black_player_rank')
     .then(data => {
       res.send(data);
     })
