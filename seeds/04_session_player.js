@@ -69,7 +69,8 @@ exports.seed = function(knex, Promise) {
       {id: 62, session_id: 2, player_id: 62, grade: 3, permission_form: true, paid: true, shirt_size: 'YM', current_rank: 62},
       {id: 63, session_id: 2, player_id: 63, grade: 3, permission_form: true, paid: true, shirt_size: 'YM', current_rank: 63},
       {id: 64, session_id: 2, player_id: 64, grade: 6, permission_form: true, paid: true, shirt_size: 'M', current_rank: 64},
-      {id: 65, session_id: 2, player_id: 65, grade: 3, permission_form: true, paid: true, shirt_size: '', current_rank: 65}
+      {id: 65, session_id: 2, player_id: 65, grade: 3, permission_form: true, paid: true, shirt_size: 'YM', current_rank: 65},
+      {id: 66, session_id: 2, player_id: 66, grade: 3, permission_form: true, paid: true, shirt_size: 'YM', current_rank: 65}
     ])
     .then(() => {
       return knex.raw("SELECT setval('session_player_id_seq', (SELECT MAX(id) FROM session_player))");
