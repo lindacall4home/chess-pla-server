@@ -65,7 +65,12 @@ exports.seed = function(knex, Promise) {
       {id: 58, first_name: 'Nick', last_name: "Deloite",  birthday: new Date('2008-08-20 00:00:00 UTC')},
       {id: 59, first_name: 'Torin', last_name: "Lieber",  birthday: new Date('2007-07-31 00:00:00 UTC')},
       {id: 60, first_name: 'Charlie', last_name: "Meyer",  birthday: new Date('2005-08-03 00:00:00 UTC')},
-      {id: 61, first_name: 'Seth', last_name: "Ferrin",  birthday: new Date('2004-10-05 00:00:00 UTC')}
+      {id: 61, first_name: 'Seth', last_name: "Ferrin",  birthday: new Date('2004-10-05 00:00:00 UTC')},
+      {id: 62, first_name: 'James', last_name: "Wright",  birthday: new Date('2008-08-21 00:00:00 UTC')},
+      {id: 63, first_name: 'Malaya', last_name: "Medina",  birthday: new Date('2009-07-18 00:00:00 UTC')},
+      {id: 64, first_name: 'Perrin', last_name: "Medina",  birthday: new Date('2005-06-05 00:00:00 UTC')},
+      {id: 65, first_name: 'Emory', last_name: "Richardson",  birthday: new Date('2008-08-27 00:00:00 UTC')}
+
     ])
     .then(() => {
       return knex.raw("SELECT setval('player_id_seq', (SELECT MAX(id) FROM player))");
