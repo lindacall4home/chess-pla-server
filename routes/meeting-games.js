@@ -36,11 +36,25 @@ router.get('/:meeting_id', function(req,res,next){
 
 
 router.post('/',  (req, res, next) => {
-  knex
-    .insert(req.body, 'id')
-    .into('game')
-    .then(ids => res.json(ids))
-    .catch(err => next(err))
+  console.log('in post pairings games: ', req.body.games);
+  console.log('in post pairings meetingId: ', req.body.meetingId);
+  knex('game')
+    .where('meeting_id', req.body.meetingId)
+    .del()
+    .then(
+      knex
+        .insert(req.body.games)
+        .into('game')
+        .then(() => res.json('inserted pairings'))
+        .catch(err => {
+          console.log('error deleting pairings: ', err);
+          next(err)
+        })
+    )
+    .catch(err => {
+      console.log('error inserting pairings: ', err);
+      next(err)
+    })
 });
 
 router.patch('/:id',  (req, res, next) => {

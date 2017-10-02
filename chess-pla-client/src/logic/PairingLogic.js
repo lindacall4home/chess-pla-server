@@ -40,8 +40,12 @@ class PairingLogic{
       let newGame = {
         black_player_id: player.player_id,
         black_player_rank: player.current_rank,
+        // black_first_name: player.first_name,
+        // black_last_name: player.last_name,
         white_player_id: opponent.player_id,
         white_player_rank: opponent.current_rank,
+        // white_first_name: opponent.first_name,
+        // white_last_name: opponent.last_name,
         meeting_id: meetingId
       }
 
@@ -63,6 +67,7 @@ class PairingLogic{
       else {
         acc[game.black_player_id]++;
       }
+      return acc;
     }, {});
 
     opponents = blackGames.reduce((acc, game) => {
@@ -72,6 +77,7 @@ class PairingLogic{
       else {
         acc[game.white_player_id]++;
       }
+      return acc;
     }, opponents);
 
     return opponents;
@@ -84,6 +90,7 @@ class PairingLogic{
         acc[keyName] = [];
       }
       acc[keyName].push(game);
+      return acc;
     }, {})
   }
 }

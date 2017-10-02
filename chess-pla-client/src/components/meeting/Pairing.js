@@ -5,7 +5,6 @@ import { setGameResult } from '../../actions';
 class Pairing extends Component {
 
   render(){
-    console.log('in pairing ', this.props.game);
     return (
       <tr key={this.props.game.game_id}>
         <td>
@@ -18,11 +17,11 @@ class Pairing extends Component {
         {this.props.game.white_first_name + " " + this.props.game.white_last_name +"(" + this.props.game.white_player_rank + ")"}
         </td>
         <td>
-          <h5
+          <h6
             className={this.props.game.game_result === null ? "chess-hidden" : " "}
           >
             {this.props.game.game_result === "Black" ? this.props.game.black_first_name + " " + this.props.game.black_last_name : this.props.game.game_result === "White" ? this.props.game.white_first_name + " " + this.props.game.white_last_name : "Draw"}
-          </h5>
+          </h6>
           <a
             id="chess-board-btn"
             className={this.props.game.game_result === null ? "btn" : "chess-hidden"}

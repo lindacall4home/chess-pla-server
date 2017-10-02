@@ -18,7 +18,7 @@ export default function(state = {
   allPlayers: [],
   allGames: [],
   showPlayers: true,
-  rankByAge: true
+  allowPairing: false
   },
   action){
 
@@ -98,9 +98,15 @@ export default function(state = {
     }
 
     case FETCH_MEETING_GAMES:
+      let gameResults = false;
+      if(action.meetingGames.length > 0 &&
+        action.meetingGames.some(game => game.game_result !== null)){
+        gameResults = true;
+      }
       return {
         ...state,
-        allGames: action.meetingGames
+        allGames: action.meetingGames,
+        allowPairing: !gameResults
       }
 
     case SET_GAME_RESULT:
@@ -128,6 +134,7 @@ export default function(state = {
       }
 
       case PAIR_PLAYERS:
+        console.log('in pair players');
         return {
           ...state,
           allGames: action.newPairings

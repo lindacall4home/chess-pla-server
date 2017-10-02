@@ -13,7 +13,6 @@ class Ladder extends Component {
                 <thead>
                   <tr>
                     <th>Rank</th>
-                    <th>Alias</th>
                     <th>Name</th>
                   </tr>
                 </thead>
@@ -23,9 +22,6 @@ class Ladder extends Component {
                   <tr key={player.id}>
                   <td>
                     {player.current_rank}
-                  </td>
-                  <td>
-                    {player.alias}
                   </td>
                   <td>
                     {player.first_name + " " + player.last_name}

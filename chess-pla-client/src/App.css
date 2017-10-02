@@ -91,7 +91,26 @@ a.brand-logo{
 
 .chess-table-header-link{
   color: white;
+}
+
+.header-link-left{
+  margin-top: -42px;
+  margin-left: 30px;
+}
+
+.header-link-right{
   margin-top: -80px;
+  margin-left: -7px;
+}
+
+.header-icon-right{
+  margin-top: -63px;
+  margin-right: 7px;
+}
+
+.header-icon-left{
+  margin-top: 25px;
+  margin-left: 10px;
 }
 
 /*.chess-form-label{
@@ -100,8 +119,9 @@ a.brand-logo{
 }*/
  /*style={{marginBottom: '5px'}}*/
 
-.container{
-  width: 90%;
+.container .rom{
+  /*width: 90%;*/
+  margin: 0px;
 }
 
 .flex-horizontal{
