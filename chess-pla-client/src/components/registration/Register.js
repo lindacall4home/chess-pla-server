@@ -5,9 +5,15 @@ import PlayerForm from './PlayerForm';
 import * as actions from '../../actions';
 
 class Register extends React.Component {
-  handleSubmit(values) {
-    this.props.addNewSessionPlayer(values, this.props.history);
-  }
+  // handleSubmit(values) {
+  //   console.log('in form submit');
+  //   this.props.addNewSessionPlayer(
+  //     values,
+  //     this.props.session.currentPlayers,
+  //     this.props.session.rankByAge,
+  //     this.props.history
+  //   );
+  // }
   render(){
     return (
       <div>
@@ -18,7 +24,15 @@ class Register extends React.Component {
           2017-2018
         </h5>
         <PlayerForm
-          onSubmit={this.handleSubmit.bind(this)}
+          onNewPlayerSubmit={(values) => {
+            console.log('in form submit', values);
+            this.props.addNewSessionPlayer(
+              values,
+              this.props.session.currentPlayers,
+              this.props.session.rankByAge,
+              this.props.history
+            );
+          }}
         />
       </div>
     );

@@ -37,8 +37,6 @@ router.get('/:meeting_id', function(req,res,next){
 
 
 router.post('/',  (req, res, next) => {
-  console.log('in post pairings games: ', req.body.games);
-  console.log('in post pairings meetingId: ', req.body.meetingId);
   knex('game')
     .where('meeting_id', req.body.meetingId)
     .del()

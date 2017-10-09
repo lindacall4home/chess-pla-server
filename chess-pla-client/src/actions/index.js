@@ -1,21 +1,19 @@
 import axios from 'axios';
 import PairingLogic from '../logic/PairingLogic';
+// import RankingLogic from '../logic/RankingLogic';
 import {
   FETCH_CURRENT_MEETINGS,
   FETCH_CURRENT_SESSION,
   FETCH_CURRENT_PLAYERS,
-  ADD_NEW_SESSION_PLAYER,
   FETCH_MEETING_PLAYERS,
   SET_CURRENT_MEETING,
   SET_CURRENT_PLAYER,
-  UPDATE_MEETING_PLAYER,
   SET_TIME_IN_OUT,
   SHOW_CHALLENGE_MODAL,
   FETCH_MEETING_GAMES,
   SET_GAME_RESULT,
   SET_PLAY_CHALLENGE_GAME,
-  SET_SHOW_PLAYERS,
-  PAIR_PLAYERS
+  SET_SHOW_PLAYERS
 } from './types';
 
 export const fetchCurrentMeetings = () => async dispatch => {
@@ -33,10 +31,15 @@ export const fetchCurrentPlayers = () => async dispatch => {
   dispatch( { type: FETCH_CURRENT_PLAYERS, currentPlayers: res.data });
 };
 
-export const addNewSessionPlayer = (newPlayer, rankByAge, history) => async dispatch => {
-  const res = await axios.post('/api/current-players', newPlayer);
-  history.push('/');
-  dispatch( { type: ADD_NEW_SESSION_PLAYER, newPlayer: res.data });
+export const addNewSessionPlayer = (newPlayer, currentPlayers, rankByAge, history) => async dispatch => {
+  console.log('before new player post: ', newPlayer.first_name);
+  // let newPlayerArr = RankingLogic.adjustRanksForNewPlayer(newPlayer, rankByAge, currentPlayers);
+  // console.log('after new player post: ', newPlayerArr);
+  // await axios.post('/api/current-players', currentPlayers);
+  // history.push('/');
+  const res = await axios.get('/api/current-players');
+  console.log('after new player fetch: ', res.data);
+  dispatch( { type: FETCH_CURRENT_PLAYERS, currentPlayers: res.data });
 };
 
 export const setCurrentMeeting = meeting => async dispatch => {
@@ -87,7 +90,6 @@ export const updateMeetingPlayer = (meetingPlayer) => async dispatch => {
 };
 
 export const fetchMeetingGames = meetingId => async dispatch => {
-  console.log('in fetchMeetingGames: ', res);
   const res = await axios.get('/api/meeting-games/' + meetingId);
   dispatch( { type: FETCH_MEETING_GAMES, meetingGames: res.data });
 };
@@ -108,12 +110,9 @@ export const setShowPlayers = (show) => async dispatch => {
 };
 
 export const pairPlayers = (meeting, session) => async dispatch => {
-  console.log('pair players ', meeting, session);
   let pairingLogic = new PairingLogic();
   let newPairings = pairingLogic.createPlayerPairings(meeting.allPlayers, session.allGames, meeting.currentMeeting.meeting_id);
-  console.log('new pairings ', newPairings);
   await axios.post('/api/meeting-games/', {games: newPairings, meetingId: meeting.currentMeeting.meeting_id});
-  console.log('ready to get pairings from db');
   const res = await axios.get('/api/meeting-games/' + meeting.currentMeeting.meeting_id);
   dispatch( { type: FETCH_MEETING_GAMES, meetingGames: res.data });
 };

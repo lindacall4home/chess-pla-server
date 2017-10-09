@@ -11,7 +11,7 @@ router.get('/', function(req, res, next){
     'player.first_name',
     'player.last_name',
     'current_rank',
-    'alias'
+    'grade'
   )
   .from('session_player')
   .innerJoin('player', 'player.id', 'player_id')
@@ -23,24 +23,27 @@ router.get('/', function(req, res, next){
   .catch(err => next(err))
 });
 
-router.post('/', validate, (req, res, next) => {
-  knex('player')
+router.post('/', (req, res, next) => {
+  console.log('in post new player');
+  for(let i = 0; i < req.body.length; i++){
+    knex('player')
     .insert({
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
-      alias: req.body.alias,
-      birthday: req.body.birthday})
+      first_name: req.body[i].first_name,
+      last_name: req.body[i].last_name,
+      alias: req.body[i].alias,
+      birthday: req.body[i].birthday})
     .returning('*')
     .then(players => {
       knex('session_player')
         .insert({
           session_id: req.body.session_id,
-          player_id: players[0].id
+          player_id: players[i].id
         })
         .returning('*')
-        .then(sessions => res.json(players[0]))
+        .then(res.json('players inserted'))
       })
     .catch(err => next(err))
+  }
 });
 
 function validate(req, res, next) {

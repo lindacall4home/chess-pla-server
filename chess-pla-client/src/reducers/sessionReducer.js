@@ -1,8 +1,7 @@
 import {
   FETCH_CURRENT_MEETINGS,
   FETCH_CURRENT_SESSION,
-  FETCH_CURRENT_PLAYERS,
-  ADD_NEW_SESSION_PLAYER } from '../actions/types';
+  FETCH_CURRENT_PLAYERS} from '../actions/types';
 
 export default function(state = {
   currentSession: {},
@@ -42,13 +41,13 @@ export default function(state = {
         currentPlayers: action.currentPlayers
       }
 
-    case ADD_NEW_SESSION_PLAYER:
-      let players = Array.from(state.currentPlayers);
-      players.push(action.newPlayer);
-      return {
-        ...state,
-        currentPlayers: players
-      }
+    // case ADD_NEW_SESSION_PLAYER:
+    //   let players = Array.from(state.currentPlayers);
+    //   players.push(action.newPlayer);
+    //   return {
+    //     ...state,
+    //     currentPlayers: players
+    //   }
 
     default:
       return state;

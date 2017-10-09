@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setPlayChallengeGame, updateMeetingPlayer } from '../../actions';
+import { setPlayChallengeGame} from '../../actions';
 
 class ChallengeModal extends Component {
 

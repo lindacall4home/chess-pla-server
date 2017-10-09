@@ -9,7 +9,7 @@ import * as actions from '../../actions';
 const FIELDS = [
   {label: "First Name", name: "first_name", type: "text"},
   {label: "Last Name", name: "last_name", type: "text"},
-  {label: "Alias", name: "alias", type: "text"},
+  {label: "Grade", name: "grade", type: "text"},
   {label: "Birthday (YYYY-MM-DD)", name: "birthday", type: "date"},
   {label: "session_id", name: "session_id", type: "hidden"}
 ];
@@ -46,7 +46,10 @@ class PlayerForm extends Component {
               style={{height: "335px"}}>
               <form
                 className="chess-form"
-                onSubmit={this.props.handleSubmit}
+                onSubmit={(values) => {
+                  console.log('submitted: ', values.first_name);
+                  this.props.onNewPlayerSubmit(values)
+                }}
                 style={{lineHeight: "1", paddingTop: "10px"}}
               >
                 {this.renderFields()}
@@ -98,5 +101,10 @@ PlayerForm = connect(
   mapStateToProps
 )(PlayerForm)
 
+// export default reduxForm({
+//   validate,
+//   form: 'surveyForm',
+//   destroyOnUnmount: false
+// })(SurveyForm);
 
 export default PlayerForm

@@ -70,7 +70,15 @@ exports.seed = function(knex, Promise) {
       {id: 63, first_name: 'Malaya', last_name: "Medina",  birthday: new Date('2009-07-18 00:00:00 UTC')},
       {id: 64, first_name: 'Perrin', last_name: "Medina",  birthday: new Date('2005-06-05 00:00:00 UTC')},
       {id: 65, first_name: 'Emory', last_name: "Richardson",  birthday: new Date('2008-08-27 00:00:00 UTC')},
-      {id: 66, first_name: 'Cade', last_name: "Richardson",  birthday: new Date('2008-08-27 00:00:00 UTC')}
+      {id: 66, first_name: 'Cade', last_name: "Richardson",  birthday: new Date('2008-08-27 00:00:00 UTC')},
+      {id: 67, first_name: 'Yutaro', last_name: "Sakai",  birthday: new Date('2005-10-04 00:00:00 UTC')},
+      {id: 68, first_name: 'Brady', last_name: "Vogel",  birthday: new Date('2008-09-11 00:00:00 UTC')},
+      {id: 69, first_name: 'Bella', last_name: "Vogel",  birthday: new Date('2006-11-09 00:00:00 UTC')},
+      {id: 70, first_name: 'Alex', last_name: "Someone",  birthday: new Date('2008-08-27 00:00:00 UTC')},
+      {id: 71, first_name: 'New', last_name: "Player1",  birthday: new Date('2008-08-27 00:00:00 UTC')},
+      {id: 72, first_name: 'New', last_name: "Player2",  birthday: new Date('2008-08-27 00:00:00 UTC')},
+      {id: 73, first_name: 'New', last_name: "Player3",  birthday: new Date('2008-08-27 00:00:00 UTC')}
+
 
     ])
     .then(() => {
