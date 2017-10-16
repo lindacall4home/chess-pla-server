@@ -188,7 +188,7 @@ exports.seed = function(knex, Promise) {
         {id: 180, session_id: 2, date: new Date('2017-10-02 00:00:00 UTC'), rank: 58, player_id: 49},
         {id: 181, session_id: 2, date: new Date('2017-10-02 00:00:00 UTC'), rank: 59, player_id: 31},
         {id: 182, session_id: 2, date: new Date('2017-10-02 00:00:00 UTC'), rank: 60, player_id: 41},
-        {id: 183, session_id: 2, date: new Date('2017-10-02 00:00:00 UTC'), rank: 61, player_id: 17}
+        {id: 183, session_id: 2, date: new Date('2017-10-02 00:00:00 UTC'), rank: 61, player_id: 17},
 
         {id: 184, session_id: 2, date: new Date('2017-10-09 00:00:00 UTC'), rank: 1, player_id: 43},
         {id: 185, session_id: 2, date: new Date('2017-10-09 00:00:00 UTC'), rank: 2, player_id: 57},
