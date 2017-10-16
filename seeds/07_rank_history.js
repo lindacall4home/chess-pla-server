@@ -1,6 +1,6 @@
 
 exports.seed = function(knex, Promise) {
-  Deletes ALL existing entries
+  // Deletes ALL existing entries
   return knex('rank_history').del()
     .then(function () {
       // Inserts seed entries
