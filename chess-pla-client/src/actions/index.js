@@ -1,6 +1,6 @@
 import axios from 'axios';
 import PairingLogic from '../logic/PairingLogic';
-// import RankingLogic from '../logic/RankingLogic';
+import RankingLogic from '../logic/RankingLogic';
 import {
   FETCH_CURRENT_MEETINGS,
   FETCH_CURRENT_SESSION,
@@ -100,7 +100,11 @@ export const addMeetingGames = (allGames, meetingId) => async dispatch => {
   dispatch( { type: FETCH_MEETING_GAMES, allGames: res.data });
 };
 
-export const setGameResult = (game, result) => async dispatch => {
+export const setGameResult = (game, result, session) => async dispatch => {
+  console.log('updating game result');
+  let rankingLogic = new RankingLogic();
+  let newRankings = rankingLogic.rankPlayersBasedOnGameResult(session.allPlayers, game, result);
+  console.log('in set game result- new rankings: ', newRankings);
   await axios.patch('/api/meeting-games/', {game: game, game_result: result});
   dispatch( { type: SET_GAME_RESULT, game: game, game_result: result});
 };
