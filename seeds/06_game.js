@@ -54,7 +54,7 @@ exports.seed = function(knex, Promise) {
         {id: 44, black_player_id: 52, black_player_rank: 32, white_player_id: 21, white_player_rank: 11, game_result: 'Draw',  meeting_id: 2},
         {id: 45, black_player_id: 41, black_player_rank: 60, white_player_id: 12, white_player_rank: 47, game_result: 'White',  meeting_id: 2},
         {id: 46, black_player_id: 22, black_player_rank: 46, white_player_id: 31, white_player_rank: 59, game_result: 'Black',  meeting_id: 2},
-        {id: 47, black_player_id: 30, black_player_rank: 2, white_player_id: 19, white_player_rank: 56, game_result: 'White',  meeting_id: 2},
+        {id: 47, black_player_id: 30, black_player_rank: 56, white_player_id: 19, white_player_rank: 55, game_result: 'White',  meeting_id: 2},
         {id: 48, black_player_id: 40, black_player_rank: 26, white_player_id: 65, white_player_rank: 65, game_result: 'Black',  meeting_id: 2},
         {id: 49, black_player_id: 33, black_player_rank: 12, white_player_id: 2, white_player_rank: 52, game_result: 'Black',  meeting_id: 2},
 

@@ -9,7 +9,7 @@ class MeetingPlayer extends Component {
     return (
       <tr key={this.props.player.player_id}>
         <td>
-          {this.props.player.first_name + " " + this.props.player.last_name}
+          {this.props.player.first_name + " " + this.props.player.last_name + " (" + this.props.player.player_id + ")"}
         </td>
         <td>
           {this.props.player.current_rank}

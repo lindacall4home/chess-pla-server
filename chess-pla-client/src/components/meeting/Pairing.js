@@ -11,10 +11,16 @@ class Pairing extends Component {
           {this.props.game.board_num}
         </td>
         <td>
-          {this.props.game.black_first_name + " " + this.props.game.black_last_name + "(" + this.props.game.black_player_rank + ")"}
+          {this.props.game.black_first_name + " " + this.props.game.black_last_name + " (" + this.props.game.black_player_id + ")"}
         </td>
         <td>
-        {this.props.game.white_first_name + " " + this.props.game.white_last_name +"(" + this.props.game.white_player_rank + ")"}
+          {this.props.game.black_player_rank}
+          </td>
+        <td>
+        {this.props.game.white_first_name + " " + this.props.game.white_last_name +" (" + this.props.game.white_player_id + ")"}
+        </td>
+        <td>
+          {this.props.game.white_player_rank}
         </td>
         <td>
           <h6

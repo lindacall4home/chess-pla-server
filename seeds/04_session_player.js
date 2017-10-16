@@ -75,9 +75,9 @@ exports.seed = function(knex, Promise) {
       {id: 68, session_id: 2, player_id: 68, grade: 3, permission_form: true, paid: true, shirt_size: '', current_rank: 68},
       {id: 69, session_id: 2, player_id: 69, grade: 5, permission_form: true, paid: true, shirt_size: '', current_rank: 69},
       {id: 70, session_id: 2, player_id: 70, grade: 3, permission_form: true, paid: true, shirt_size: '', current_rank: 70},
-      {id: 71, session_id: 2, player_id: 71, grade: 3, permission_form: true, paid: true, shirt_size: '', current_rank: 71},
-      {id: 72, session_id: 2, player_id: 72, grade: 3, permission_form: true, paid: true, shirt_size: '', current_rank: 72},
-      {id: 73, session_id: 2, player_id: 73, grade: 3, permission_form: true, paid: true, shirt_size: '', current_rank: 73}
+      {id: 71, session_id: 2, player_id: 71, grade: 6, permission_form: true, paid: true, shirt_size: 'L', current_rank: 71},
+      {id: 72, session_id: 2, player_id: 72, grade: 3, permission_form: true, paid: true, shirt_size: 'YM', current_rank: 72},
+      {id: 73, session_id: 2, player_id: 73, grade: 5, permission_form: true, paid: true, shirt_size: '', current_rank: 73}
 
     ])
     .then(() => {

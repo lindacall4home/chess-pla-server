@@ -30,7 +30,7 @@ exports.seed = function(knex, Promise) {
       {id: 23, first_name: 'Josh', last_name: 'Kim',  birthday: new Date('2006-11-30 00:00:00 UTC')},
       {id: 24, first_name: 'Violet', last_name: 'Clyker',  birthday: new Date('2005-06-05 00:00:00 UTC')},
       {id: 25, first_name: 'Soren', last_name: 'Hillestad',  birthday: new Date('2008-12-11 00:00:00 UTC')},
-      {id: 26, first_name: 'Marley', last_name: 'Fogarti',  birthday: new Date('2008-08-04 00:00:00 UTC')},
+      {id: 26, first_name: 'Marley', last_name: 'Fogarty',  birthday: new Date('2008-08-04 00:00:00 UTC')},
       {id: 27, first_name: 'Preston', last_name: 'Hutchings',  birthday: new Date('2007-04-24 00:00:00 UTC')},
       {id: 28, first_name: 'Dylan', last_name: 'Hall',  birthday: new Date('2008-05-01 00:00:00 UTC')},
       {id: 29, first_name: 'Michael', last_name: 'Zhang',  birthday: new Date('2005-09-27 00:00:00 UTC')},
@@ -74,10 +74,10 @@ exports.seed = function(knex, Promise) {
       {id: 67, first_name: 'Yutaro', last_name: "Sakai",  birthday: new Date('2005-10-04 00:00:00 UTC')},
       {id: 68, first_name: 'Brady', last_name: "Vogel",  birthday: new Date('2008-09-11 00:00:00 UTC')},
       {id: 69, first_name: 'Bella', last_name: "Vogel",  birthday: new Date('2006-11-09 00:00:00 UTC')},
-      {id: 70, first_name: 'Alex', last_name: "Someone",  birthday: new Date('2008-08-27 00:00:00 UTC')},
-      {id: 71, first_name: 'New', last_name: "Player1",  birthday: new Date('2008-08-27 00:00:00 UTC')},
-      {id: 72, first_name: 'New', last_name: "Player2",  birthday: new Date('2008-08-27 00:00:00 UTC')},
-      {id: 73, first_name: 'New', last_name: "Player3",  birthday: new Date('2008-08-27 00:00:00 UTC')}
+      {id: 70, first_name: 'Alex', last_name: "Damon",  birthday: new Date('2008-08-27 00:00:00 UTC')},
+      {id: 71, first_name: 'Luca', last_name: "Gebre-Mariam",  birthday: new Date('2008-04-04 00:00:00 UTC')},
+      {id: 72, first_name: 'Moadh', last_name: "Nadir",  birthday: new Date('2008-11-26 00:00:00 UTC')},
+      {id: 73, first_name: 'Stephanie', last_name: "Gathright",  birthday: new Date('2002-01-01 00:00:00 UTC')}
 
 
     ])
