@@ -40,7 +40,7 @@ class RankingLogic {
   }
 
   rankPlayersBasedOnGameResult(playerArr, game, result, session){
-    console.log('in rankPlayersBasedOnGameResult: ', playerArr, '  ', game, ' ', result);
+    console.log('in rankPlayersBasedOnGameResult: ', playerArr, '  ', game, ' ', result, ' ', session);
 
     let gameDate = this.getGameDate(game, session);
 
@@ -142,6 +142,7 @@ class RankingLogic {
   }
 
   getRankHistory(playerArr, sessionId, date){
+    console.log('in getRankHistory sessionId ', sessionId);
     let newPlayerArr = [];
     for(let i = 0; i < playerArr.length; i++){
       newPlayerArr.push({ player_id: playerArr[i].id, date: date, session_id: sessionId , rank: playerArr[i].current_rank })
