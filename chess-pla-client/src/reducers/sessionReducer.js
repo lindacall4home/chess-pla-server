@@ -16,9 +16,12 @@ export default function(state = {
     case FETCH_CURRENT_MEETINGS:
 
       const meetingsById = action.meetings.reduce((result, meeting) => {
-        result[meeting.id] = meeting
+        result[meeting.meeting_id] = meeting
         return result
       }, {})
+
+      console.log('meetingsById ', meetingsById);
+      console.log('action.meetings ', action.meetings);
 
       return {
         ...state,

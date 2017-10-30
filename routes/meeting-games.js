@@ -57,16 +57,35 @@ router.post('/',  (req, res, next) => {
 });
 
 router.patch('/:id',  (req, res, next) => {
-  knex('game')
-  .where({
-    id: req.body.game.game_id
-  })
-  .update({
-    result: req.body.game_result
-  })
-  .returning('*')
-  .then(games => res.json(games[0]))
-  .catch(err => next(err))
+  console.log('in patch for updating game result ', req.body.game.game_id, ' ', req.body.game_result);
+  knex('rank_history')
+    .where('date', req.body.rankings[0].date)
+    .del()
+    .then(
+      knex
+        .insert(req.body.rankings)
+        .into('rank_history')
+        .then(
+          knex('game')
+            .where({
+              id: req.body.game.game_id
+            })
+            .update({
+              game_result: req.body.game_result
+            })
+            .returning('*')
+            .then(games => res.json(games[0]))
+            .catch(err => next(err))
+        .catch(err => {
+          console.log('error deleting rankings: ', err);
+          next(err)
+        })
+    )
+    .catch(err => {
+      console.log('error inserting rankings: ', err);
+      next(err)
+    })
+  )
 });
 
 module.exports = router;

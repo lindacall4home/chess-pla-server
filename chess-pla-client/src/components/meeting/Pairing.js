@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setGameResult } from '../../actions';
+import { showResultModal } from '../../actions';
 
 class Pairing extends Component {
 
@@ -31,7 +31,7 @@ class Pairing extends Component {
           <a
             id="chess-board-btn"
             className={this.props.game.game_result === null ? "btn" : "chess-hidden"}
-            onClick={() => this.props.onChallengeGameClick(this.props.player)}
+            onClick={() => this.props.onResultClick(this.props.game)}
           >
             <i
               id="challengeIcon"
@@ -73,8 +73,8 @@ function mapStateToProps(state, { game }) {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onResultClick: (game, result) => {
-      dispatch(setGameResult(game, result))
+    onResultClick: (game) => {
+      dispatch(showResultModal(true, game))
     }
   }
 }

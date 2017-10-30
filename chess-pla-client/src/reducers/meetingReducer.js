@@ -8,7 +8,8 @@ import {
   SET_GAME_RESULT,
   FETCH_MEETING_GAMES,
   SET_SHOW_PLAYERS,
-  PAIR_PLAYERS
+  PAIR_PLAYERS,
+  SHOW_RESULT_MODAL
  } from '../actions/types';
 
 export default function(state = {
@@ -18,7 +19,9 @@ export default function(state = {
   allPlayers: [],
   allGames: [],
   showPlayers: true,
-  allowPairing: false
+  allowPairing: false,
+  showResultModal: false,
+  currentGame: {},
   },
   action){
 
@@ -124,7 +127,9 @@ export default function(state = {
 
       return {
         ...state,
-        allGames: newGameArray
+        allGames: newGameArray,
+        showResultModal: false,
+        currentGame: null
       }
 
     case SET_SHOW_PLAYERS:
@@ -134,10 +139,16 @@ export default function(state = {
       }
 
       case PAIR_PLAYERS:
-        console.log('in pair players');
         return {
           ...state,
           allGames: action.newPairings
+        }
+
+      case SHOW_RESULT_MODAL:
+        return{
+          ...state,
+          showResultModal: action.show,
+          currentGame: action.game
         }
 
     default:

@@ -5,22 +5,33 @@ const router = express.Router();
 const knex = require('../knex');
 
 router.get('/', function(req, res, next){
-  knex
-  .select(
-    'player.id',
-    'player.first_name',
-    'player.last_name',
-    'current_rank',
-    'grade'
-  )
-  .from('session_player')
-  .innerJoin('player', 'player.id', 'player_id')
-  .innerJoin('session', 'session.id', 'session_id')
-  .where('is_current', true)
-  .orderBy('current_rank')
-  .then(players => {
-    res.json(players)})
-  .catch(err => next(err))
+ knex('rank_history')
+ .max('date')
+ .then(data => {
+
+   knex
+   .select(
+     'player.id',
+     'player.first_name',
+     'player.last_name',
+     'rank as current_rank',
+     'grade'
+   )
+   .from('session_player')
+   .innerJoin('player', 'player.id', 'player_id')
+   .innerJoin('session', 'session.id', 'session_id')
+   .innerJoin('rank_history', 'player.id', 'rank_history.player_id')
+   .where({
+       is_current: true,
+       date:  data[0].max
+     })
+   .orderBy('rank')
+   .then(players => {
+     res.json(players)})
+   .catch(err => next(err))
+
+ })
+ .catch(err => next(err))
 });
 
 router.post('/', (req, res, next) => {

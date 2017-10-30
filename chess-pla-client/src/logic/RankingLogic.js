@@ -1,4 +1,5 @@
 class RankingLogic {
+
   comparePlayersByRank(player1, player2){
     return player1.current_rank - player2.current_rank;
   }
@@ -10,11 +11,11 @@ class RankingLogic {
 
 
   didHigherRankedPlayerWin(blackPlayer, whitePlayer, result){
-
+    console.log('black player/ white player ', blackPlayer, ' ', whitePlayer);
     if((result === 'Black' &&
-      blackPlayer.current_rank > whitePlayer.current_rank) ||
+      blackPlayer.current_rank < whitePlayer.current_rank) ||
       (result === 'White' &&
-      whitePlayer.current_rank > blackPlayer.current_rank)){
+      whitePlayer.current_rank < blackPlayer.current_rank)){
         console.log('higher ranked player won');
         return true;
       }
@@ -31,72 +32,86 @@ class RankingLogic {
     return playerArr;
   }
 
-  rankPlayersBasedOnGameResult(playerArr, game, result){
-    console.log('in rankPlayersBasedOnGameResult: ', game, ' ', result);
+  getGameDate(game, session){
+    console.log('session ', session);
+    console.log('meetingsById ', session.meetingsById);
+    console.log('game.meeting_id ', game.meeting_id);
+    return session.meetingsById[game.meeting_id].date;
+  }
+
+  rankPlayersBasedOnGameResult(playerArr, game, result, session){
+    console.log('in rankPlayersBasedOnGameResult: ', playerArr, '  ', game, ' ', result);
+
+    let gameDate = this.getGameDate(game, session);
 
     let newPlayerArr = playerArr.map(player => Object.assign({}, player));
 
-    console.log(newPlayerArr);
+    console.log(newPlayerArr, game, gameDate);
 
     let blackPlayer =
-      playerArr.find(player => player.player_id === game.black_player_id);
+      newPlayerArr.find(player => player.id === game.black_player_id);
 
     console.log('black player: ', blackPlayer);
 
     let whitePlayer =
-      playerArr.find(player => player.player_id === game.white_player_id);
+      newPlayerArr.find(player => player.id === game.white_player_id);
 
     console.log('white player: ', whitePlayer);
 
-    if(this.didHigherRankedPlayerWin(blackPlayer, whitePlayer, result)){
-      return newPlayerArr;
+    if(!this.didHigherRankedPlayerWin(blackPlayer, whitePlayer, result)){
+
+
+      let highRankPlayer =
+        blackPlayer.current_rank < whitePlayer.current_rank ?
+        blackPlayer : whitePlayer;
+
+      let lowRankPlayer =
+        blackPlayer.current_rank > whitePlayer.current_rank ?
+        blackPlayer : whitePlayer;
+
+      if(result === 'Draw'){
+        newPlayerArr = this.adjustRanksForDraw(highRankPlayer, lowRankPlayer, playerArr);
+      }
+      else{
+
+        newPlayerArr = this.adjustRanksForLowerRankedPlayerWins(highRankPlayer.current_rank, lowRankPlayer.current_rank, newPlayerArr);
+      }
+
     }
-
-    let highRankPlayer =
-      blackPlayer.current_rank > whitePlayer.current_rank ?
-      blackPlayer : whitePlayer;
-
-    let lowRankPlayer =
-      blackPlayer.current_rank < whitePlayer.current_rank ?
-      blackPlayer : whitePlayer;
-
-    if(result === 'Draw'){
-      return this.adjustRanksForDraw(highRankPlayer, lowRankPlayer, playerArr)
-        .sort(this.comparePlayersByRank);
-    }
-
-    return this.adjustRanksForLowerRankedPlayerWins(highRankPlayer, lowRankPlayer, newPlayerArr).sort(this.comparePlayersByRank);
-
+    return this.getRankHistory(newPlayerArr, session.session_id, gameDate).sort(this.comparePlayersByRank);
   }
 
   adjustRanksForDraw(highRankPlayer, lowRankPlayer, playerArr)
   {
     console.log('in adjustRanksForDraw high/low: ',  highRankPlayer, lowRankPlayer);
-    lowRankPlayer.current_rank = highRankPlayer.current_rank + 1;
+    playerArr[lowRankPlayer.current_rank - 1].current_rank = highRankPlayer.current_rank + 1;
 
     this.bumpRanks(highRankPlayer.current_rank, lowRankPlayer.current_rank - 1, playerArr)
 
     return playerArr;
   }
 
-  adjustRanksForLowerRankedPlayerWins(highRankPlayer, lowRankPlayer, playerArr)
+  adjustRanksForLowerRankedPlayerWins(highRankPlayerRank, lowRankPlayerRank, playerArr)
   {
-    console.log('in adjustRanksForLowerRankedPlayerWins high/low: ',  highRankPlayer,
-    lowRankPlayer);
+    console.log('in adjustRanksForLowerRankedPlayerWins high/low: ',  highRankPlayerRank,
+    lowRankPlayerRank);
 
-    lowRankPlayer.current_rank = highRankPlayer.current_rank;
+    playerArr[highRankPlayerRank - 1].current_rank++;
 
-    this.bumpRanks(highRankPlayer.current_rank - 1, lowRankPlayer.current_rank - 1, playerArr);
+    playerArr[lowRankPlayerRank - 1].current_rank = highRankPlayerRank;
+
+    this.bumpRanks(highRankPlayerRank, lowRankPlayerRank- 1, playerArr);
 
     return playerArr;
   }
 
   bumpRanks(fromElement, toElement, playerArr){
+    console.log('bump ranks from to ', fromElement, toElement)
     for (let i = fromElement; i < toElement; i++){
       playerArr[i].current_rank++;
     }
 
-    console.log('playerArr after bump: playerArr');
+    console.log('playerArr after bump: playerArr', playerArr);
   }
 
   adjustRanksForNewPlayer(newPlayer, rankByAge, playerArr){
@@ -124,6 +139,14 @@ class RankingLogic {
       }
       return 0;
     }
+  }
+
+  getRankHistory(playerArr, sessionId, date){
+    let newPlayerArr = [];
+    for(let i = 0; i < playerArr.length; i++){
+      newPlayerArr.push({ player_id: playerArr[i].id, date: date, session_id: sessionId , rank: playerArr[i].current_rank })
+    }
+    return newPlayerArr;
   }
 }
 
