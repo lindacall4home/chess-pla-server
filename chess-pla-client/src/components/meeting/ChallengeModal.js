@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setPlayChallengeGame} from '../../actions';
+import { setPlayChallengeGame, showChallengeModal } from '../../actions';
 
 class ChallengeModal extends Component {
 
   render(){
+    console.log('in ChallengeModal ', this.props.meeting.showChallengeModal, ' ', this.props.meeting.showResultModal);
     if(this.props.meeting.showChallengeModal){
       return (
         <div className="chess-modal">
+          <div>
+            <button
+              className="btn-flat right black-text"
+              onClick={() => this.props.onCloseChallengeModal()}
+            >
+              <i className="material-icons right">clear</i>
+            </button>
+          </div>
           <div className="chess-modal-content">
             <h4 className="center-align">Would you like to play a challenge game?</h4>
           </div>
@@ -43,6 +52,9 @@ const mapDispatchToProps = dispatch => {
     onSetPlayChallengeGame: (play, player) => {
       console.log('in onSetPlayChallengeGame ' , play, player);
       dispatch(setPlayChallengeGame(play, player))
+    },
+    onCloseChallengeModal: () => {
+      dispatch(showChallengeModal(false, null))
     }
   }
 }

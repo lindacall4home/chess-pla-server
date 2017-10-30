@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import MeetingPlayerList from './MeetingPlayerList';
 import ChallengeModal from './ChallengeModal';
 import PairingList from './PairingList';
+import GameResultModal from './GameResultModal';
 import * as actions from '../../actions';
 import { bindActionCreators } from 'redux'
 
@@ -25,6 +26,7 @@ class Meeting extends React.Component {
         <div>
           <ChallengeModal/>
           <MeetingPlayerList/>
+          <GameResultModal/>
           <PairingList/>
         </div>
       </div>

@@ -1,36 +1,44 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setGameResult } from '../../actions';
+import { setGameResult, showResultModal } from '../../actions';
 
 class GameResultModal extends Component {
-
   render(){
-    if(this.props.meeting.showGameResultModal){
+    console.log('in GameResultModal ', this.props.meeting.showResultModal);
+    if(this.props.meeting.showResultModal){
       return (
         <div className="chess-modal">
+          <div>
+            <button
+              className="btn-flat right black-text"
+              onClick={() => this.props.onCloseResultModal()}
+            >
+              <i className="material-icons right">clear</i>
+            </button>
+          </div>
           <div className="chess-modal-content">
             <h4 className="center-align">Who won?</h4>
           </div>
           <div className="chess-modal-footer flex-horizontal">
             <button
               className="chess-btn btn-flat left black white-text"
-              onClick={() => this.props.setGameResult('Black', this.props.game)}
+              onClick={() => this.props.onSetGameResult( this.props.meeting.currentGame, 'Black', this.props.session)}
             >
-              Black
+              {this.props.meeting.currentGame.black_first_name + " " + this.props.meeting.currentGame.black_last_name}
             </button>
             <button
-              className="chess-btn btn-flat white black-text"
-              style={{border: "1px solid black"}}
-              onClick={() => this.props.setGameResult('Draw', this.props.game)}
+              className="chess-btn btn-flat black-text"
+              style={{border: "1px solid black", backgroundColor: 'gray'}}
+              onClick={() => this.props.onSetGameResult( this.props.meeting.currentGame, 'Draw', this.props.session)}
             >
               Draw
             </button>
             <button
               className="chess-btn btn-flat white black-text"
               style={{border: "1px solid black"}}
-              onClick={() => this.props.setGameResult('White', this.props.game)}
+              onClick={() => this.props.onSetGameResult( this.props.meeting.currentGame, 'White', this.props.session)}
             >
-              White
+              {this.props.meeting.currentGame.white_first_name + " " + this.props.meeting.currentGame.white_last_name}
             </button>
           </div>
         </div>
@@ -40,15 +48,18 @@ class GameResultModal extends Component {
   }
 }
 
-function mapStateToProps({ game }) {
-  return { game };
+function mapStateToProps({ meeting, session  }) {
+  return { meeting, session  };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSetGameResult: (result, game) => {
-      console.log('in onSetGameResult ' , result, game);
-      dispatch(setGameResult(result, game))
+    onSetGameResult: (game, result, session) => {
+      console.log('in onSetGameResult ' , result, game, session);
+      dispatch(setGameResult(game, result, session))
+    },
+    onCloseResultModal: () => {
+      dispatch(showResultModal(false, null))
     }
   }
 }

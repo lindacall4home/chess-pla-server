@@ -13,3 +13,4 @@ export const FETCH_MEETING_GAMES = 'fetch_meeting_games';
 export const SET_GAME_RESULT = 'set_game_resut';
 export const SET_SHOW_PLAYERS = 'set_show_players';
 export const PAIR_PLAYERS = 'pair_players';
+export const SHOW_RESULT_MODAL = 'show_result_modal';
