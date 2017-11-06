@@ -40,7 +40,7 @@ class RankingLogic {
   }
 
   rankPlayersBasedOnGameResult(playerArr, game, result, session){
-    console.log('in rankPlayersBasedOnGameResult: ', playerArr, '  ', game, ' ', result, ' ', session);
+    console.log('in rankPlayersBasedOnGameResult: ', playerArr, '  ', game, ' ', result, ' ', session.currentSession);
 
     let gameDate = this.getGameDate(game, session);
 
@@ -78,7 +78,7 @@ class RankingLogic {
       }
 
     }
-    return this.getRankHistory(newPlayerArr, session.session_id, gameDate).sort(this.comparePlayersByRank);
+    return this.getRankHistory(newPlayerArr, session.currentSession.sessionId, gameDate).sort(this.comparePlayersByRank);
   }
 
   adjustRanksForDraw(highRankPlayer, lowRankPlayer, playerArr)

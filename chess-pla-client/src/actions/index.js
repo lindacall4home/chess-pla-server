@@ -107,7 +107,7 @@ export const setGameResult = (game, result, session) => async dispatch => {
   let newRankings = rankingLogic.rankPlayersBasedOnGameResult(session.currentPlayers, game, result, session);
   console.log('in set game result- new rankings: ', newRankings);
   await axios.patch('/api/meeting-games/'  + game.game_id, {game: game, game_result: result, rankings: newRankings });
-  dispatch( { type: SET_GAME_RESULT, game: game, game_result: result});
+  dispatch( { type: SET_GAME_RESULT, game: game, game_result: result, players: newRankings });
 };
 
 export const setShowPlayers = (show) => async dispatch => {

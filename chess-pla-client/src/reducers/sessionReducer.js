@@ -30,10 +30,12 @@ export default function(state = {
       }
 
     case FETCH_CURRENT_SESSION:
+      console.log('in fetchCurrentSession ', action);
+
       return {
         ...state,
-        currentSession: {sessionId: action.sessionData.session_id,
-                         sessionName: action.sessionData.session_name},
+        currentSession: {sessionId: action.sessionData[0].session_id,
+                         sessionName: action.sessionData[0].session_name},
         rankByAge: action.sessionData[0].game_result === null ? true : false,
         allGames: action.sessionData
       }

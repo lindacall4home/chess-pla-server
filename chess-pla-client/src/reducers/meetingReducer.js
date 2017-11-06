@@ -127,6 +127,7 @@ export default function(state = {
 
       return {
         ...state,
+        allPlayers: action.players,
         allGames: newGameArray,
         showResultModal: false,
         currentGame: null
