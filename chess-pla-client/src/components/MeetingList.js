@@ -22,7 +22,7 @@ class MeetingList extends Component {
                       <td>
                         <Link to={'/meeting'} style={{color: 'black', textDecoration: 'underline'}} onClick={() => {
                           this.props.onMeetingClick(meeting)}}>
-                          {new Date(meeting.date).toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', timezone: 'UTC' })}
+                          {new Date(meeting.date).toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' })}
                         </Link>
                       </td>
                     </tr>

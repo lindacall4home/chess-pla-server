@@ -21,7 +21,9 @@ class Meeting extends React.Component {
           Eldorado K-8 Chess Club
         </h4>
         <h5 className="center-align chess-page-sub-header">
-          {new Date(this.props.meeting.currentMeeting.date).toDateString()}
+          {new Date(this.props.meeting.currentMeeting.date)
+            .toLocaleDateString('en-US',
+            { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' })}
         </h5>
         <div>
           <ChallengeModal/>
