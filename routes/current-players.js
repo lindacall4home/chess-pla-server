@@ -11,7 +11,7 @@ router.get('/', function(req, res, next){
 
    knex
    .select(
-     'player.id',
+     'player.id as player_id',
      'player.first_name',
      'player.last_name',
      'rank as current_rank',
@@ -35,7 +35,6 @@ router.get('/', function(req, res, next){
 });
 
 router.post('/', (req, res, next) => {
-  console.log('in post new player');
   for(let i = 0; i < req.body.length; i++){
     knex('player')
     .insert({

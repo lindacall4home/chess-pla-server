@@ -85,7 +85,6 @@ const mapDispatchToProps = dispatch => {
       dispatch(setShowPlayers(show))
     },
     onPairPlayers: (meeting, session) => {
-      console.log('in pair dispatch ', meeting, session);
       dispatch(pairPlayers(meeting, session))
     },
   }

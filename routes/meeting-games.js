@@ -57,7 +57,7 @@ router.post('/',  (req, res, next) => {
 });
 
 router.patch('/:id',  (req, res, next) => {
-  console.log('in patch for updating game result ', req.body.game.game_id, ' ', req.body.game_result, ' ', req.body.rankings);
+  console.log('in patch for updating game result ', req.body.game.game_id, ' ', req.body.game_result, ' ', req.body.rankings[3]);
   knex('rank_history')
     .where('date', req.body.rankings[0].date)
     .del()

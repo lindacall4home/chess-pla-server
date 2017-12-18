@@ -5,7 +5,6 @@ import { setPlayChallengeGame, showChallengeModal } from '../../actions';
 class ChallengeModal extends Component {
 
   render(){
-    console.log('in ChallengeModal ', this.props.meeting.showChallengeModal, ' ', this.props.meeting.showResultModal);
     if(this.props.meeting.showChallengeModal){
       return (
         <div className="chess-modal">
@@ -50,7 +49,6 @@ function mapStateToProps({meeting}) {
 const mapDispatchToProps = dispatch => {
   return {
     onSetPlayChallengeGame: (play, player) => {
-      console.log('in onSetPlayChallengeGame ' , play, player);
       dispatch(setPlayChallengeGame(play, player))
     },
     onCloseChallengeModal: () => {

@@ -20,9 +20,6 @@ export default function(state = {
         return result
       }, {})
 
-      console.log('meetingsById ', meetingsById);
-      console.log('action.meetings ', action.meetings);
-
       return {
         ...state,
         meetingsById: meetingsById,
@@ -30,7 +27,6 @@ export default function(state = {
       }
 
     case FETCH_CURRENT_SESSION:
-      console.log('in fetchCurrentSession ', action);
 
       return {
         ...state,

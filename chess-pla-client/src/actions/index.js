@@ -29,22 +29,22 @@ export const fetchCurrentSession = () => async dispatch => {
 
 export const fetchCurrentPlayers = () => async dispatch => {
   const res = await axios.get('/api/current-players');
+  console.log('in fetchCurrentPlayers ', res.data);
   dispatch( { type: FETCH_CURRENT_PLAYERS, currentPlayers: res.data });
 };
 
 export const addNewSessionPlayer = (newPlayer, currentPlayers, rankByAge, history) => async dispatch => {
-  console.log('before new player post: ', newPlayer.first_name);
+  // console.log('before new player post: ', newPlayer.first_name);
   // let newPlayerArr = RankingLogic.adjustRanksForNewPlayer(newPlayer, rankByAge, currentPlayers);
   // console.log('after new player post: ', newPlayerArr);
   // await axios.post('/api/current-players', currentPlayers);
   // history.push('/');
   const res = await axios.get('/api/current-players');
-  console.log('after new player fetch: ', res.data);
+  // console.log('after new player fetch: ', res.data);
   dispatch( { type: FETCH_CURRENT_PLAYERS, currentPlayers: res.data });
 };
 
 export const setCurrentMeeting = meeting => async dispatch => {
-  console.log('in setCurrentMeeting: ', meeting);
   dispatch( { type: SET_CURRENT_MEETING, meeting: meeting });
 };
 
@@ -73,7 +73,6 @@ export const showChallengeModal = (show, player) => async dispatch => {
 };
 
 export const setPlayChallengeGame = (play, player) => async dispatch => {
-  console.log('in setPlayChallengeGame: ', player);
   await axios.post('/api/meeting-players/',
     {
       player: player,
@@ -85,9 +84,7 @@ export const setPlayChallengeGame = (play, player) => async dispatch => {
 };
 
 export const updateMeetingPlayer = (meetingPlayer) => async dispatch => {
-  console.log('update meeting player ', meetingPlayer);
   await axios.post('/api/meeting-players/', meetingPlayer);
-  // dispatch( { type: UPDATE_MEETING_PLAYER, meetingPlayer: meetingPlayer});
 };
 
 export const fetchMeetingGames = meetingId => async dispatch => {
@@ -101,13 +98,16 @@ export const addMeetingGames = (allGames, meetingId) => async dispatch => {
   dispatch( { type: FETCH_MEETING_GAMES, allGames: res.data });
 };
 
-export const setGameResult = (game, result, session) => async dispatch => {
-  console.log('updating game result', session.currentPlayers);
+export const setGameResult = (game, result, session, meeting) => async dispatch => {
+  console.log('updating game result', meeting.allPlayers);
   let rankingLogic = new RankingLogic();
-  let newRankings = rankingLogic.rankPlayersBasedOnGameResult(session.currentPlayers, game, result, session);
-  console.log('in set game result- new rankings: ', newRankings);
+  let newRankings = rankingLogic.rankPlayersBasedOnGameResult(meeting.allPlayers, game, result, session);
+  console.log('in set game result- new rankings/players: ', newRankings, meeting.allPlayers);
   await axios.patch('/api/meeting-games/'  + game.game_id, {game: game, game_result: result, rankings: newRankings });
-  dispatch( { type: SET_GAME_RESULT, game: game, game_result: result, players: newRankings });
+  const res = await axios.get('/api/meeting-players/' + game.meeting_id);
+  // const res = await axios.get('/api/current-players');
+  console.log('in set game result- after read database: ', res.data[52].first_name, ' ', res.data[52].current_rank);
+  dispatch( { type: SET_GAME_RESULT, game: game, game_result: result, players: res.data });
 };
 
 export const setShowPlayers = (show) => async dispatch => {

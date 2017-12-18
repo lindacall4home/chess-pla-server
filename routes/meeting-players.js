@@ -8,7 +8,6 @@ router.get('/:meeting_id', function(req,res,next){
   knex('rank_history')
   .max('date')
   .then(max_date => {
-    console.log('max date', max_date);
 
     knex
       .select(
@@ -55,7 +54,6 @@ router.post('/',  (req, res, next) => {
     .then(players => {
       if(players.length === 0)
       {
-        console.log('inserting player: ', req.body);
         knex('meeting_player')
           .insert({
             meeting_id: req.body.player.meeting_id,
@@ -68,7 +66,6 @@ router.post('/',  (req, res, next) => {
         .then(players => res.json(players[0]))
       }
       else{
-        console.log('updating player: ', req.body);
         knex('meeting_player')
         .where({
           meeting_id: req.body.player.meeting_id,
