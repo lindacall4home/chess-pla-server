@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/lindacall4home/chess-pla-server#readme",
   "dependencies": {
+    "bluebird": "^3.5.1",
     "body-parser": "^1.17.2",
     "concurrently": "^3.5.0",
     "cookie-session": "^1.3.1",
