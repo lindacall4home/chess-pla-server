@@ -12,7 +12,7 @@ class Home extends Component {
           Eldorado K-8 Chess Club
         </h4>
         <h5 className="center-align chess-page-sub-header">
-          2017-2018
+          2018-2019
         </h5>
         <div className="flex-horizontal">
           <Ladder/>
