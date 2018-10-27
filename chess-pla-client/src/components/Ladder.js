@@ -31,7 +31,7 @@ class Ladder extends Component {
                     {player.current_rank}
                   </td>
                   <td>
-                    {player.first_name + " " + player.last_name + " (" + player.player_id + ")"}
+                    {player.first_name + " " + player.last_name}
                   </td>
                   </tr>
                 )}
