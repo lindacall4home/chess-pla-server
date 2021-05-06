@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.21",
     "materialize-css": "^0.100.1",
     "react": "^15.6.1",
     "react-date-picker2": "^6.3.0",
